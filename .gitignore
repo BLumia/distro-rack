@@ -1,0 +1,7 @@
+build/
+.cache/
+
+# LLM-based tooling stuff
+.cursor/
+.zed/
+.aider.*
