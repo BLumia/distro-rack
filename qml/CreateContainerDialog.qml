@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2025 Gary Wang <opensource@blumia.net>
+//
+// SPDX-License-Identifier: MIT
+
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
@@ -5,12 +9,12 @@ import QtQuick.Dialogs
 
 Dialog {
     id: createDialog
-    title: "Create a Distrobox"
+    title: qsTr("Create a Distrobox")
     modal: true
-    
+
     width: 500
     height: 600
-    
+
     // Properties for the guided creation
     property alias nameField: nameField
     property alias imageCombo: imageCombo
@@ -18,74 +22,74 @@ Dialog {
     property alias initCheckBox: initCheckBox
     property alias homeDirField: homeDirField
     property alias volumesList: volumesList
-    
+
     // Properties for assemble
     property string assembleFilePath: ""
     property string assembleUrl: ""
-    
+
     ColumnLayout {
         anchors.fill: parent
         spacing: 0
-        
+
         // View switcher
         TabBar {
             id: tabBar
             Layout.fillWidth: true
-            
+
             TabButton {
-                text: "Guided"
+                text: qsTr("Guided")
             }
             TabButton {
-                text: "From File"
+                text: qsTr("From File")
             }
             TabButton {
-                text: "From URL"
+                text: qsTr("From URL")
             }
         }
-        
+
         StackLayout {
             id: stackLayout
             Layout.fillWidth: true
             Layout.fillHeight: true
             currentIndex: tabBar.currentIndex
-            
+
             // Guided creation page
             ScrollView {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 contentWidth: availableWidth
-                
+
                 ColumnLayout {
                     anchors.fill: parent
                     anchors.margins: 24
                     spacing: 20
-                    
+
                     GroupBox {
-                        title: "Settings"
+                        title: qsTr("Settings")
                         Layout.fillWidth: true
-                        
+
                         GridLayout {
                             columns: 2
                             rowSpacing: 12
                             columnSpacing: 12
                             anchors.fill: parent
-                            
+
                             Label {
-                                text: "Name"
+                                text: qsTr("Name")
                                 font.bold: true
                             }
-                            
+
                             TextField {
                                 id: nameField
                                 Layout.fillWidth: true
                                 placeholderText: "Enter container name"
                             }
-                            
+
                             Label {
-                                text: "Base Image"
+                                text: qsTr("Base Image")
                                 font.bold: true
                             }
-                            
+
                             ComboBox {
                                 id: imageCombo
                                 Layout.fillWidth: true
@@ -99,23 +103,23 @@ Dialog {
                                     ListElement { text: "alpine:latest" }
                                 }
                             }
-                            
+
                             Label {
-                                text: "Custom Home Directory"
+                                text: qsTr("Custom Home Directory")
                                 font.bold: true
                             }
-                            
+
                             RowLayout {
                                 Layout.fillWidth: true
-                                
+
                                 TextField {
                                     id: homeDirField
                                     Layout.fillWidth: true
                                     placeholderText: "Leave empty for default"
                                 }
-                                
+
                                 Button {
-                                    text: "Browse..."
+                                    text: qsTr("Browse...")
                                     onClicked: {
                                         folderDialog.open()
                                     }
@@ -123,54 +127,54 @@ Dialog {
                             }
                         }
                     }
-                    
+
                     GroupBox {
-                        title: "Options"
+                        title: qsTr("Options")
                         Layout.fillWidth: true
-                        
+
                         ColumnLayout {
                             anchors.fill: parent
                             spacing: 8
-                            
+
                             CheckBox {
                                 id: nvidiaCheckBox
-                                text: "NVIDIA Support"
+                                text: qsTr("NVIDIA Support")
                             }
-                            
+
                             CheckBox {
                                 id: initCheckBox
-                                text: "Init process"
+                                text: qsTr("Init process")
                             }
                         }
                     }
-                    
+
                     GroupBox {
-                        title: "Volumes"
+                        title: qsTr("Volumes")
                         Layout.fillWidth: true
-                        
+
                         ColumnLayout {
                             anchors.fill: parent
                             spacing: 12
-                            
+
                             Text {
-                                text: "Specify volumes in the format 'host_path:container_path'"
+                                text: qsTr("Specify volumes in the format 'host_path:container_path'")
                                 color: palette.mid
                                 font.pixelSize: 11
                                 Layout.fillWidth: true
                                 wrapMode: Text.WordWrap
                             }
-                            
+
                             RowLayout {
                                 Layout.fillWidth: true
-                                
+
                                 TextField {
                                     id: volumeField
                                     Layout.fillWidth: true
                                     placeholderText: "/path/on/host:/path/in/container"
                                 }
-                                
+
                                 Button {
-                                    text: "Add Volume"
+                                    text: qsTr("Add Volume")
                                     enabled: volumeField.text.trim() !== ""
                                     onClicked: {
                                         if (volumeField.text.trim() !== "") {
@@ -180,7 +184,7 @@ Dialog {
                                     }
                                 }
                             }
-                            
+
                             ListView {
                                 id: volumesList
                                 Layout.fillWidth: true
@@ -188,19 +192,19 @@ Dialog {
                                 model: ListModel {
                                     id: volumesModel
                                 }
-                                
+
                                 delegate: RowLayout {
                                     width: volumesList.width
                                     spacing: 8
-                                    
+
                                     Text {
                                         text: model.text
                                         Layout.fillWidth: true
                                         elide: Text.ElideRight
                                     }
-                                    
+
                                     Button {
-                                        text: "Remove"
+                                        text: qsTr("Remove")
                                         icon.name: "user-trash-symbolic"
                                         flat: true
                                         onClicked: {
@@ -211,54 +215,54 @@ Dialog {
                             }
                         }
                     }
-                    
+
                     RowLayout {
                         Layout.fillWidth: true
                         Layout.alignment: Qt.AlignCenter
-                        
+
                         Item { Layout.fillWidth: true }
-                        
+
                         Button {
-                            text: "Create"
+                            text: qsTr("Create")
                             enabled: nameField.text.trim() !== "" && imageCombo.currentText.trim() !== ""
                             highlighted: true
                             onClicked: {
                                 createGuidedContainer()
                             }
                         }
-                        
+
                         Item { Layout.fillWidth: true }
                     }
-                    
+
                     Item {
                         Layout.fillHeight: true
                     }
                 }
             }
-            
+
             // From File page
             ColumnLayout {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 spacing: 20
-                
+
                 GroupBox {
-                    title: "Assemble from File"
+                    title: qsTr("Assemble from File")
                     Layout.fillWidth: true
-                    
+
                     ColumnLayout {
                         anchors.fill: parent
                         spacing: 12
-                        
+
                         Text {
-                            text: "Create a container from an assemble file"
+                            text: qsTr("Create a container from an assemble file")
                             color: palette.mid
                             Layout.fillWidth: true
                         }
-                        
+
                         RowLayout {
                             Layout.fillWidth: true
-                            
+
                             TextField {
                                 id: filePathField
                                 Layout.fillWidth: true
@@ -266,9 +270,9 @@ Dialog {
                                 text: createDialog.assembleFilePath
                                 readOnly: true
                             }
-                            
+
                             Button {
-                                text: "Browse..."
+                                text: qsTr("Browse...")
                                 onClicked: {
                                     assembleFileDialog.open()
                                 }
@@ -276,50 +280,50 @@ Dialog {
                         }
                     }
                 }
-                
+
                 RowLayout {
                     Layout.fillWidth: true
                     Layout.alignment: Qt.AlignCenter
-                    
+
                     Item { Layout.fillWidth: true }
-                    
+
                     Button {
-                        text: "Create"
+                        text: qsTr("Create")
                         enabled: createDialog.assembleFilePath !== ""
                         highlighted: true
                         onClicked: {
                             createFromFile()
                         }
                     }
-                    
+
                     Item { Layout.fillWidth: true }
                 }
-                
+
                 Item {
                     Layout.fillHeight: true
                 }
             }
-            
+
             // From URL page
             ColumnLayout {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 spacing: 20
-                
+
                 GroupBox {
-                    title: "From URL"
+                    title: qsTr("From URL")
                     Layout.fillWidth: true
-                    
+
                     ColumnLayout {
                         anchors.fill: parent
                         spacing: 12
-                        
+
                         Text {
-                            text: "Create a container from a remote URL"
+                            text: qsTr("Create a container from a remote URL")
                             color: palette.mid
                             Layout.fillWidth: true
                         }
-                        
+
                         TextField {
                             id: urlField
                             Layout.fillWidth: true
@@ -331,50 +335,50 @@ Dialog {
                         }
                     }
                 }
-                
+
                 RowLayout {
                     Layout.fillWidth: true
                     Layout.alignment: Qt.AlignCenter
-                    
+
                     Item { Layout.fillWidth: true }
-                    
+
                     Button {
-                        text: "Create"
+                        text: qsTr("Create")
                         enabled: createDialog.assembleUrl.trim() !== ""
                         highlighted: true
                         onClicked: {
                             createFromUrl()
                         }
                     }
-                    
+
                     Item { Layout.fillWidth: true }
                 }
-                
+
                 Item {
                     Layout.fillHeight: true
                 }
             }
         }
     }
-    
+
     // File dialogs
     FolderDialog {
         id: folderDialog
-        title: "Select Home Directory"
+        title: qsTr("Select Home Directory")
         onAccepted: {
             homeDirField.text = selectedFile.toString().replace('file://', '')
         }
     }
-    
+
     FileDialog {
         id: assembleFileDialog
-        title: "Select Assemble File"
+        title: qsTr("Select Assemble File")
         nameFilters: ["Configuration files (*.ini *.yaml *.yml)", "All files (*)"]
         onAccepted: {
             createDialog.assembleFilePath = selectedFile.toString().replace('file://', '')
         }
     }
-    
+
     // Methods
     function createGuidedContainer() {
         // Collect volumes
@@ -382,7 +386,7 @@ Dialog {
         for (var i = 0; i < volumesModel.count; i++) {
             volumes.push(volumesModel.get(i).text)
         }
-        
+
         // Call the C++ method
         stateManager.distroboxManager.createContainer(
             nameField.text.trim(),
@@ -392,28 +396,28 @@ Dialog {
             homeDirField.text.trim() || "",
             volumes
         )
-        
+
         // Reset form
         resetForm()
         close()
     }
-    
+
     function createFromFile() {
         stateManager.distroboxManager.assembleFromFile(createDialog.assembleFilePath)
-        
+
         // Reset
         createDialog.assembleFilePath = ""
         close()
     }
-    
+
     function createFromUrl() {
         stateManager.distroboxManager.assembleFromUrl(createDialog.assembleUrl.trim())
-        
+
         // Reset
         createDialog.assembleUrl = ""
         close()
     }
-    
+
     function resetForm() {
         nameField.text = ""
         imageCombo.currentIndex = 0
@@ -426,11 +430,11 @@ Dialog {
         createDialog.assembleUrl = ""
         tabBar.currentIndex = 0
     }
-    
+
     onOpened: {
         nameField.forceActiveFocus()
     }
-    
+
     onClosed: {
         resetForm()
     }

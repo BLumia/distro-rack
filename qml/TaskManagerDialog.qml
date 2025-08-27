@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2025 Gary Wang <opensource@blumia.net>
+//
+// SPDX-License-Identifier: MIT
+
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
@@ -5,37 +9,37 @@ import DistroRack 1.0
 
 Dialog {
     id: taskManagerDialog
-    title: "Running Tasks"
+    title: qsTr("Running Tasks")
     modal: true
     standardButtons: Dialog.Close
-    
+
     width: 600
     height: 500
-    
+
     property string selectedTaskId: ""
-    
+
     StackLayout {
         id: stackLayout
         anchors.fill: parent
         currentIndex: stateManager.taskModel.rowCount() > 0 ? 1 : 0
-        
+
         // Empty state page
         Item {
             id: emptyPage
-            
+
             Column {
                 anchors.centerIn: parent
                 spacing: 20
-                
+
                 Text {
-                    text: "No Running Tasks"
+                    text: qsTr("No Running Tasks")
                     font.pointSize: 18
                     anchors.horizontalCenter: parent.horizontalCenter
                     color: palette.windowText
                 }
-                
+
                 Text {
-                    text: "Tasks such as creating, deleting and upgrading containers will appear here."
+                    text: qsTr("Tasks such as creating, deleting and upgrading containers will appear here.")
                     anchors.horizontalCenter: parent.horizontalCenter
                     horizontalAlignment: Text.AlignHCenter
                     width: 300
@@ -44,49 +48,49 @@ Dialog {
                 }
             }
         }
-        
+
         // Task list page
         ColumnLayout {
             id: taskListPage
             spacing: 10
-            
+
             // Task list
             ScrollView {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 Layout.margins: 10
-                
+
                 ListView {
                     id: taskListView
                     model: stateManager.taskModel
                     spacing: 2
-                    
+
                     delegate: ItemDelegate {
                         width: taskListView.width
                         height: 60
-                        
+
                         Rectangle {
                             anchors.fill: parent
                             color: parent.hovered ? palette.highlight : "transparent"
                             opacity: 0.1
                             radius: 4
                         }
-                        
+
                         RowLayout {
                             anchors.fill: parent
                             anchors.margins: 10
                             spacing: 10
-                            
+
                             Column {
                                 Layout.fillWidth: true
                                 spacing: 2
-                                
+
                                 Text {
                                     text: model.target ? model.target + ": " + model.name : model.name
                                     font.bold: true
                                     color: palette.windowText
                                 }
-                                
+
                                 Text {
                                     text: model.statusString
                                     font.pixelSize: 12
@@ -100,7 +104,7 @@ Dialog {
                                         }
                                     }
                                 }
-                                
+
                                 Text {
                                     text: model.description
                                     font.pixelSize: 11
@@ -109,7 +113,7 @@ Dialog {
                                     width: parent.width
                                 }
                             }
-                            
+
                             // Status indicator
                             Rectangle {
                                 width: 12
@@ -126,7 +130,7 @@ Dialog {
                                 }
                             }
                         }
-                        
+
                         onClicked: {
                             taskManagerDialog.selectedTaskId = model.taskId
                             stateManager.selectedTaskId = model.taskId
@@ -135,17 +139,17 @@ Dialog {
                     }
                 }
             }
-            
+
             // Bottom button
             Button {
                 id: clearEndedTasksButton
                 Layout.alignment: Qt.AlignCenter
-                text: "Clear Ended Tasks"
+                text: qsTr("Clear Ended Tasks")
                 enabled: hasEndedTasks()
                 onClicked: {
                     stateManager.clearEndedTasks()
                 }
-                
+
                 function hasEndedTasks() {
                     for (var i = 0; i < stateManager.taskModel.rowCount(); i++) {
                         var isEnded = stateManager.taskModel.data(stateManager.taskModel.index(i, 0), TaskModel.IsEndedRole)
@@ -153,7 +157,7 @@ Dialog {
                     }
                     return false
                 }
-                
+
                 // 监听模型变化以更新按钮状态
                 Connections {
                     target: stateManager.taskModel
@@ -169,50 +173,50 @@ Dialog {
                 }
             }
         }
-        
+
         // Task detail page
         ColumnLayout {
             id: taskDetailPage
             spacing: 10
-            
+
             // Header with back button
             RowLayout {
                 Layout.fillWidth: true
                 Layout.margins: 10
-                
+
                 Button {
-                    text: "← Back"
+                    text: qsTr("← Back")
                     onClicked: {
                         stackLayout.currentIndex = 1
                         taskManagerDialog.selectedTaskId = ""
                         stateManager.selectedTaskId = ""
                     }
                 }
-                
+
                 Text {
                     Layout.fillWidth: true
-                    text: "Task Details"
+                    text: qsTr("Task Details")
                     font.bold: true
                     font.pointSize: 14
                     horizontalAlignment: Text.AlignCenter
                     color: palette.windowText
                 }
-                
+
                 Item {
                     width: 80 // Spacer to center the title
                 }
             }
-            
+
             // Task info
             ScrollView {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 Layout.margins: 10
-                
+
                 Column {
                     width: parent.width
                     spacing: 10
-                    
+
                     Text {
                         id: detailTaskName
                         font.bold: true
@@ -221,13 +225,13 @@ Dialog {
                         wrapMode: Text.WordWrap
                         width: parent.width
                     }
-                    
+
                     Text {
                         id: detailTaskStatus
                         font.pixelSize: 11
                         color: palette.windowText
                     }
-                    
+
                     Text {
                         id: detailTaskDescription
                         font.pixelSize: 11
@@ -235,7 +239,7 @@ Dialog {
                         wrapMode: Text.WordWrap
                         width: parent.width
                     }
-                    
+
                     Rectangle {
                         width: parent.width
                         height: 200
@@ -243,11 +247,11 @@ Dialog {
                         border.color: palette.mid
                         border.width: 1
                         radius: 4
-                        
+
                         ScrollView {
                             anchors.fill: parent
                             anchors.margins: 5
-                            
+
                             TextArea {
                                 id: detailOutputArea
                                 readOnly: true
@@ -260,7 +264,7 @@ Dialog {
                             }
                         }
                     }
-                    
+
                     Text {
                         id: detailErrorMessage
                         visible: text.length > 0
@@ -273,7 +277,7 @@ Dialog {
             }
         }
     }
-    
+
     // Update detail view when selected task changes
     Connections {
         target: stateManager
@@ -281,7 +285,7 @@ Dialog {
             updateTaskDetail()
         }
     }
-    
+
     // Update detail view when task model changes
     Connections {
         target: stateManager.taskModel
@@ -291,17 +295,17 @@ Dialog {
             }
         }
     }
-    
+
     function updateTaskDetail() {
         if (!taskManagerDialog.selectedTaskId) return
-        
+
         // 使用实际的角色常量而不是硬编码数字
         for (var i = 0; i < stateManager.taskModel.rowCount(); i++) {
             var index = stateManager.taskModel.index(i, 0)
             var taskId = stateManager.taskModel.data(index, TaskModel.IdRole)
-            
+
             console.log("Checking task:", taskId, "against selected:", taskManagerDialog.selectedTaskId)
-            
+
             if (taskId === taskManagerDialog.selectedTaskId) {
                 var name = stateManager.taskModel.data(index, TaskModel.NameRole)
                 var description = stateManager.taskModel.data(index, TaskModel.DescriptionRole)
@@ -309,9 +313,9 @@ Dialog {
                 var statusString = stateManager.taskModel.data(index, TaskModel.StatusStringRole)
                 var output = stateManager.taskModel.data(index, TaskModel.OutputRole)
                 var errorMessage = stateManager.taskModel.data(index, TaskModel.ErrorMessageRole)
-                
+
                 console.log("Task details:", name, statusString, description)
-                
+
                 detailTaskName.text = target ? target + ": " + name : name
                 detailTaskStatus.text = "Status: " + statusString
                 detailTaskDescription.text = description
@@ -321,7 +325,7 @@ Dialog {
             }
         }
     }
-    
+
     onOpened: {
         // 当对话框打开时，显示任务列表页面
         stackLayout.currentIndex = stateManager.taskModel.rowCount() > 0 ? 1 : 0

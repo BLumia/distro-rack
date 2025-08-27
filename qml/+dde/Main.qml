@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2025 Gary Wang <opensource@blumia.net>
+//
+// SPDX-License-Identifier: MIT
+
 import QtQuick 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
@@ -11,7 +15,7 @@ D.ApplicationWindow {
     width: 800
     height: 600
     visible: true
-    title: "DistroRack DDE"
+    title: qsTr("DistroRack DDE")
     D.DWindow.enabled: true
     // color: "transparent"
 
@@ -63,7 +67,7 @@ D.ApplicationWindow {
                 createContainerDialog.open()
             }
         }
-        title: "DistroRack DDE"
+        title: qsTr("DistroRack DDE")
         menu: Menu {
             Action {
                 text: qsTr("Refresh")
@@ -107,19 +111,19 @@ D.ApplicationWindow {
     SplitView {
         anchors.fill: parent
         // topPadding: titleBar.height
-        
+
         // Sidebar for container list
         ContainerList {
             id: containerList
             SplitView.preferredWidth: 200
             SplitView.minimumWidth: 0
             SplitView.maximumWidth: 250
-            
+
             onContainerSelected: function(containerName) {
                 containerDetails.updateContainer(containerName)
             }
         }
-        
+
         // Main content area for container details
         ContainerDetails {
             id: containerDetails
@@ -130,14 +134,14 @@ D.ApplicationWindow {
     // Dialog for creating new containers
     CreateContainerDialog {
         id: createContainerDialog
-        
+
         onAccepted: {
             // 当用户点击OK时，调用创建容器函数
             if (createContainerDialog.nameField.text && createContainerDialog.imageCombo.currentText) {
                 // 收集卷信息
                 var volumes = []
                 // TODO: 从卷列表中收集卷信息
-                
+
                 stateManager.distroboxManager.createContainer(
                     createContainerDialog.nameField.text,
                     createContainerDialog.imageCombo.currentText,
@@ -150,7 +154,7 @@ D.ApplicationWindow {
         }
     }
 
-    
+
     // Task manager dialog
     TaskManagerDialog {
         id: taskManagerDialog
@@ -162,23 +166,23 @@ D.ApplicationWindow {
         anchors.fill: parent
         visible: containerList.count === 0
         color: root.palette.window
-        
+
         ColumnLayout {
             anchors.centerIn: parent
-            
+
             Label {
-                text: "No Containers"
+                text: qsTr("No Containers")
                 font.pointSize: 24
                 Layout.alignment: Qt.AlignHCenter
             }
-            
+
             Label {
-                text: "Get started by creating a new container"
+                text: qsTr("Get started by creating a new container")
                 Layout.alignment: Qt.AlignHCenter
             }
-            
+
             Button {
-                text: "Create Container"
+                text: qsTr("Create Container")
                 icon.name: "list-add"
                 Layout.alignment: Qt.AlignHCenter
                 onClicked: {
@@ -187,88 +191,88 @@ D.ApplicationWindow {
             }
         }
     }
-    
+
     // 连接StateManager信号
     Connections {
         target: stateManager
-        
+
         function onTaskManagerRequested() {
             taskManagerDialog.open()
         }
-        
+
         function onExportableAppsRequested(containerName) {
             console.log("Exportable apps requested for: " + containerName)
             // TODO: 打开 ExportableAppsDialog
         }
-        
+
         function onCreateContainerRequested() {
             createContainerDialog.open()
         }
     }
-    
+
     // 连接DistroboxManager信号
     Connections {
         target: stateManager.distroboxManager
-        
+
         function onContainerCreated() {
             // 容器创建成功后显示提示
             console.log("Container created successfully")
         }
-        
+
         function onContainerDeleted() {
             // 容器删除成功后显示提示
             console.log("Container deleted successfully")
         }
-        
+
         function onCommandError(error) {
             // 显示错误信息
             console.log("Command error: " + error)
         }
     }
-    
+
     // 升级所有容器的确认对话框
     Dialog {
         id: upgradeAllDialog
-        title: "Upgrade All Containers"
+        title: qsTr("Upgrade All Containers")
         modal: true
         standardButtons: Dialog.Yes | Dialog.No
-        
+
         width: 400
         height: 150
-        
+
         Text {
-            text: "Are you sure you want to upgrade all containers?\n\nThis operation may take a very long time and will update all packages in every container."
+            text: qsTr("Are you sure you want to upgrade all containers?\n\nThis operation may take a very long time and will update all packages in every container.")
             wrapMode: Text.WordWrap
             width: parent.width
             color: palette.windowText
         }
-        
+
         onAccepted: {
             stateManager.distroboxManager.upgradeAllContainers()
         }
     }
-    
+
     // 停止所有容器的确认对话框
     Dialog {
         id: stopAllDialog
-        title: "Stop All Containers"
+        title: qsTr("Stop All Containers")
         modal: true
         standardButtons: Dialog.Yes | Dialog.No
-        
+
         width: 400
         height: 150
-        
+
         Text {
-            text: "Are you sure you want to stop all running containers?\n\nThis will shut down all containers but will not delete them."
+            text: qsTr("Are you sure you want to stop all running containers?\n\nThis will shut down all containers but will not delete them.")
             wrapMode: Text.WordWrap
             width: parent.width
             color: palette.windowText
         }
-        
+
         onAccepted: {
             stateManager.distroboxManager.stopAllContainers()
         }
     }
-    
+
 
 }

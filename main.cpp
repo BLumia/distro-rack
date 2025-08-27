@@ -4,9 +4,11 @@
 
 #include <QGuiApplication>
 #include <QIcon>
+#include <QLocale>
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QQmlFileSelector>
+#include <QTranslator>
 #include <qtenvironmentvariables.h>
 #include "DistroboxManager.h"
 #include "StateManager.h"
@@ -21,6 +23,17 @@ int main(int argc, char *argv[])
     // set the application information for QSettings
     QCoreApplication::setOrganizationName("DistroRack");
     QCoreApplication::setApplicationName("DistroRack");
+
+    // Load translations
+    QTranslator translator;
+    const QStringList uiLanguages = QLocale::system().uiLanguages();
+    for (const QString &locale : uiLanguages) {
+        const QString baseName = "distro-rack_" + QLocale(locale).name();
+        if (translator.load(":/i18n/" + baseName)) {
+            app.installTranslator(&translator);
+            break;
+        }
+    }
 
     app.setWindowIcon(QIcon::fromTheme("terminal-distrobox-icon"));
 
