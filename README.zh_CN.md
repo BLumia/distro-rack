@@ -32,6 +32,12 @@ $ cmake --build build
 
 构建完成后，可执行文件将位于 `/build/distro-rack`。
 
+要生成一个 `.deb` 包，只需 `cd` 到构建目录并使用 `CPack`：
+
+```shell
+$ cpack -G DEB
+```
+
 ## 为什么要为 Distrobox 开发另一个图形界面
 
 本项目深受 [DistroShelf](https://github.com/ranfdev/DistroShelf/) 启发。我最初计划将 DistroShelf 移植到 `deepin 25`，但遗憾的是 DistroShelf 需要相当新版本的 `gtk-rs` 和 `libadwaita`，这需要相当新版本的 `gtk4-sys`，而 `deepin 25` 在近期可能无法提供，因此无法构建。虽然 `flatpak` 在 `deepin` 中可用，但如果终端用户没有良好的网络连接，使用 `flathub` 包会极其困难，特别是对于主要生活在中国大陆的 deepin 用户。

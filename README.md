@@ -32,6 +32,12 @@ $ cmake --build build
 
 Once built, binary will be located at `/build/distro-rack`.
 
+To generate a `.deb` package, simply `cd` to the build directory and use `CPack`:
+
+```shell
+$ cpack -G DEB
+```
+
 ## Why another GUI for Distrobox
 
 This project is heavily inspired by [DistroShelf](https://github.com/ranfdev/DistroShelf/). I originally plan to port DistroShelf to `deepin 25`, but sadly DistroShelf requires a pretty up-to-date version of `gtk-rs` and `libadwaita` which requires a pretty recent version of `gtk4-sys` that `deepin 25` might not be able to ship in the near future, thus impossible to build. While `flatpak` is available in `deepin`, using `flathub` packages are extremely hard if the end-user doesn't have a decent network, especially for deepin users who mostly live in China mainland.

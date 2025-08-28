@@ -9,6 +9,9 @@ project(distro-rack VERSION 1.0.2 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# Include GNUInstallDirs for standard installation directories
+include(GNUInstallDirs)
+
 # Find required packages
 find_package(Qt6 6.8 REQUIRED COMPONENTS Core Quick LinguistTools)
 
@@ -59,5 +62,47 @@ target_link_libraries(distro-rack PRIVATE
 # Install binary
 install(TARGETS distro-rack
     BUNDLE DESTINATION .
-    RUNTIME DESTINATION bin
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )
+
+# Install desktop file
+install(FILES dist/net.blumia.distro-rack.desktop
+    DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications
+)
+
+# Install AppStream metainfo file
+install(FILES dist/net.blumia.distro-rack.metainfo.xml
+    DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/metainfo
+)
+
+# CPack configuration for creating packages
+# Basic package information
+set(CPACK_PACKAGE_NAME "distro-rack")
+set(CPACK_PACKAGE_VERSION "${PROJECT_VERSION}")
+set(CPACK_PACKAGE_VENDOR "Gary Wang")
+set(CPACK_PACKAGE_CONTACT "opensource@blumia.net")
+set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "A Qt6-based GUI for managing Distrobox containers")
+set(CPACK_PACKAGE_DESCRIPTION "DistroRack is a modern Qt6-based graphical user interface for managing Distrobox containers. It provides an intuitive way to create, manage, and interact with containerized Linux distributions.")
+
+# DEB package specific settings
+set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Gary Wang <opensource@blumia.net>")
+set(CPACK_DEBIAN_PACKAGE_SECTION "utils")
+set(CPACK_DEBIAN_PACKAGE_PRIORITY "optional")
+set(CPACK_DEBIAN_PACKAGE_HOMEPAGE "https://github.com/blumia/distro-rack")
+
+# Dependencies - Qt6 and distrobox
+set(CPACK_DEBIAN_PACKAGE_DEPENDS "qt6-base-dev, qt6-declarative-dev, distrobox")
+set(CPACK_DEBIAN_PACKAGE_SUGGESTS "libdtk6declarative")
+
+# License file
+if(EXISTS "${CMAKE_SOURCE_DIR}/LICENSE")
+    set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_SOURCE_DIR}/LICENSE")
+endif()
+
+# README file
+if(EXISTS "${CMAKE_SOURCE_DIR}/README.md")
+    set(CPACK_RESOURCE_FILE_README "${CMAKE_SOURCE_DIR}/README.md")
+endif()
+
+# Include CPack module AFTER setting all variables
+include(CPack)

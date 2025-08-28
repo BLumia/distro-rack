@@ -1,0 +1,17 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=DistroRack
+Name[zh_CN]=DistroRack
+Comment=A Qt6-based GUI for managing Distrobox containers
+Comment[zh_CN]=基于 Qt6 的 Distrobox 容器管理图形界面
+GenericName=Container Manager
+GenericName[zh_CN]=容器管理器
+Exec=distro-rack
+Icon=terminal-distrobox-icon
+StartupNotify=true
+Categories=System;Utility;
+Keywords=distrobox;container;virtualization;linux;terminal;
+Keywords[zh_CN]=distrobox;容器;虚拟化;linux;终端;
+StartupWMClass=distro-rack
+MimeType=
