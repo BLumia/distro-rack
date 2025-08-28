@@ -1,0 +1,145 @@
+name: Build DEB Package
+
+on:
+  push:
+    branches: [ '*' ]
+    tags: [ '*' ]
+  pull_request:
+    branches: [ '*' ]
+  workflow_dispatch:
+
+jobs:
+  build-deb:
+    runs-on: ubuntu-latest
+    container:
+      image: linuxdeepin/deepin:crimson
+      options: --user root
+
+    steps:
+    - name: Update package lists and install basic tools
+      run: |
+        apt update
+        apt install -y git ca-certificates curl
+
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Install build dependencies
+      run: |
+        apt install -y \
+          build-essential \
+          cmake \
+          pkg-config \
+          qt6-base-dev \
+          qt6-declarative-dev \
+          qt6-tools-dev \
+          qt6-tools-dev-tools \
+          qt6-l10n-tools \
+          libqt6core6 \
+          libqt6gui6 \
+          libqt6quick6 \
+          libqt6qml6 \
+          qml6-module-qtquick \
+          qml6-module-qtquick-controls \
+          qml6-module-qtquick-layouts \
+          qml6-module-qtquick-window \
+          libdtk6declarative \
+          libdtk6declarative-dev
+
+    - name: Create build directory
+      run: mkdir -p build
+
+    - name: Configure CMake
+      working-directory: build
+      run: |
+        cmake .. \
+          -DCMAKE_BUILD_TYPE=Release \
+          -DCMAKE_INSTALL_PREFIX=/usr
+
+    - name: Build project
+      working-directory: build
+      run: make -j$(nproc)
+
+    - name: Create DEB package
+      working-directory: build
+      run: cpack -G DEB
+
+    - name: Get package info
+      id: package_info
+      working-directory: build
+      run: |
+        DEB_FILE=$(ls *.deb | head -1)
+        echo "deb_file=${DEB_FILE}" >> $GITHUB_OUTPUT
+        echo "deb_name=$(basename ${DEB_FILE} .deb)" >> $GITHUB_OUTPUT
+
+    - name: Verify DEB package
+      working-directory: build
+      run: |
+        echo "=== Package Contents ==="
+        dpkg-deb --contents ${{ steps.package_info.outputs.deb_file }}
+        echo ""
+        echo "=== Package Info ==="
+        dpkg-deb --info ${{ steps.package_info.outputs.deb_file }}
+
+    - name: Upload DEB package as artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ steps.package_info.outputs.deb_name }}
+        path: build/*.deb
+        if-no-files-found: error
+
+    - name: Upload to release (if tag)
+      if: startsWith(github.ref, 'refs/tags/')
+      uses: softprops/action-gh-release@v2
+      with:
+        files: build/*.deb
+        draft: false
+        prerelease: false
+        generate_release_notes: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  test-install:
+    runs-on: ubuntu-latest
+    needs: build-deb
+    container:
+      image: linuxdeepin/deepin:crimson
+      options: --user root
+
+    steps:
+    - name: Update package lists
+      run: apt update
+
+    - name: Install basic dependencies for testing
+      run: |
+        apt install -y \
+          qt6-base-dev \
+          qt6-declarative-dev \
+          distrobox \
+          libdtk6declarative
+
+    - name: Download DEB package
+      uses: actions/download-artifact@v4
+      with:
+        pattern: distro-rack*
+        merge-multiple: true
+
+    - name: Test install DEB package
+      run: |
+        DEB_FILE=$(ls *.deb | head -1)
+        echo "Installing package: ${DEB_FILE}"
+        dpkg -i ${DEB_FILE} || apt-get install -f -y
+
+        # Verify installation
+        which distro-rack
+        distro-rack --version || echo "Note: GUI application may not show version in headless environment"
+
+        # Check desktop file
+        test -f /usr/share/applications/net.blumia.distro-rack.desktop
+        echo "Desktop file exists ✓"
+
+        # Check metainfo file
+        test -f /usr/share/metainfo/net.blumia.distro-rack.metainfo.xml
+        echo "MetaInfo file exists ✓"
+
+        echo "Package installation test passed!"
