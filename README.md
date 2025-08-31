@@ -2,6 +2,10 @@
 
 English | [中文](README.zh_CN.md)
 
+|CI|Build Status|CI Builds|
+|---|---|---|
+|deepin 25|[![deepin 25 CI](https://github.com/BLumia/distro-rack/actions/workflows/build-deb.yml/badge.svg)](https://github.com/BLumia/distro-rack/actions/workflows/build-deb.yml)|[Get Latest CI Builds](https://nightly.link/BLumia/distro-rack/workflows/build-deb/master)|
+
 DistroRack is a feature-rich graphical interface for creating and managing [Distrobox](https://github.com/89luca89/distrobox) containers on Linux, written in C++/QML.
 
 ## Features
@@ -45,6 +49,13 @@ This project is heavily inspired by [DistroShelf](https://github.com/ranfdev/Dis
 By making a Qt-based GUI for distrobox, we bring the possibility to make it look more system-native on Qt-based DEs (DDE in this case, maybe KDE as well in the future, and fallback to a generic Qt/QML GUI for other DEs), and make it directly usable under `deepin 25` with a simple `dpkg -i` (or maybe `apt install` in the future), without the need of fiddling with `flatpak` mirrors or proxies.
 
 This project is also an experimental project to test if and how the LLM-based tooling could help in project development. I might write a blogpost related to this topic later.
+
+## Funding
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/blumia)
+
+[![Afdian](https://static.afdiancdn.com/static/img/logo/logo.png)Afdian | 爱发电](https://afdian.com/a/BLumia)
+
 
 ## License
 

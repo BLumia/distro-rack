@@ -2,6 +2,10 @@
 
 [English](README.md) | 中文
 
+|CI|构建状态|CI 构建|
+|---|---|---|
+|deepin 25|[![deepin 25 CI](https://github.com/BLumia/distro-rack/actions/workflows/build-deb.yml/badge.svg)](https://github.com/BLumia/distro-rack/actions/workflows/build-deb.yml)|[获取最新 CI 构建版](https://nightly.link/BLumia/distro-rack/workflows/build-deb/master)|
+
 DistroRack 是一个功能丰富的图形界面程序，用于在 Linux 上创建和管理 [Distrobox](https://github.com/89luca89/distrobox) 容器，使用 C++/QML 编写。
 
 ## 功能特性
@@ -45,6 +49,12 @@ $ cpack -G DEB
 通过为 distrobox 制作基于 Qt 的图形界面，我们带来了在基于 Qt 的桌面环境（本例中是 DDE，未来可能还有 KDE，其他桌面环境则回退到通用的 Qt/QML 界面）上使其看起来更加系统原生的可能性，并使其能够在 `deepin 25` 下通过简单的 `dpkg -i`（或者未来可能通过 `apt install`）直接使用，无需折腾 `flatpak` 镜像或代理。
 
 本项目也是一个实验性项目，用于测试基于 LLM 的工具是否以及如何能够帮助项目开发。我可能会在稍后写一篇关于这个话题的博客文章。
+
+## 支持
+
+[![Afdian](https://static.afdiancdn.com/static/img/logo/logo.png)Afdian | 爱发电](https://afdian.com/a/BLumia)
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/blumia)
 
 ## 许可证
 
