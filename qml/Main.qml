@@ -122,24 +122,6 @@ ApplicationWindow {
     // Dialog for creating new containers
     CreateContainerDialog {
         id: createContainerDialog
-
-        onAccepted: {
-            // 当用户点击OK时，调用创建容器函数
-            if (createContainerDialog.nameField.text && createContainerDialog.imageCombo.currentText) {
-                // 收集卷信息
-                var volumes = []
-                // TODO: 从卷列表中收集卷信息
-
-                stateManager.distroboxManager.createContainer(
-                    createContainerDialog.nameField.text,
-                    createContainerDialog.imageCombo.currentText,
-                    createContainerDialog.nvidiaCheckBox.checked,
-                    createContainerDialog.initCheckBox.checked,
-                    createContainerDialog.homeDirField.text,
-                    volumes
-                )
-            }
-        }
     }
 
 
@@ -149,35 +131,10 @@ ApplicationWindow {
     }
 
     // Initial state when no containers exist
-    Rectangle {
+    NoContainersView {
         id: noContainersView
         anchors.fill: parent
-        visible: containerList.count === 0
-        color: window.palette.window
-
-        ColumnLayout {
-            anchors.centerIn: parent
-
-            Label {
-                text: qsTr("No Containers")
-                font.pointSize: 24
-                Layout.alignment: Qt.AlignHCenter
-            }
-
-            Label {
-                text: qsTr("Get started by creating a new container")
-                Layout.alignment: Qt.AlignHCenter
-            }
-
-            Button {
-                text: qsTr("Create Container")
-                icon.name: "list-add"
-                anchors.horizontalCenter: parent.horizontalCenter
-                onClicked: {
-                    createContainerDialog.open()
-                }
-            }
-        }
+        visible: containerList.containerCount === 0
     }
 
     // 连接StateManager信号
@@ -190,7 +147,7 @@ ApplicationWindow {
 
         function onExportableAppsRequested(containerName) {
             console.log("Exportable apps requested for: " + containerName)
-            // TODO: 打开 ExportableAppsDialog
+            containerDetails.showExportableApps(containerName)
         }
 
         function onCreateContainerRequested() {
@@ -224,6 +181,7 @@ ApplicationWindow {
         title: qsTr("Upgrade All Containers")
         modal: true
         standardButtons: Dialog.Yes | Dialog.No
+        anchors.centerIn: Overlay.overlay
 
         width: 400
         height: 150
@@ -246,6 +204,7 @@ ApplicationWindow {
         title: qsTr("Stop All Containers")
         modal: true
         standardButtons: Dialog.Yes | Dialog.No
+        anchors.centerIn: Overlay.overlay
 
         width: 400
         height: 150

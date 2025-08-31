@@ -4,7 +4,7 @@
 
 cmake_minimum_required(VERSION 3.16)
 
-project(distro-rack VERSION 1.0.2 LANGUAGES CXX)
+project(distro-rack VERSION 0.1.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -45,7 +45,13 @@ qt6_add_qml_module(distro-rack
         qml/CreateContainerDialog.qml
         qml/ExportableAppsDialog.qml
         qml/TaskManagerDialog.qml
+        qml/NoContainersView.qml
+        qml/ThemedIcon.qml
+        qml/+dde/ThemedIcon.qml
 )
+
+# Define package version for C++
+target_compile_definitions(distro-rack PRIVATE DISTRO_RACK_VERSION="${PROJECT_VERSION}")
 
 # Add translations
 qt6_add_translations(distro-rack

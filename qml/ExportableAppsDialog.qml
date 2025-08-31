@@ -11,6 +11,7 @@ Dialog {
     title: qsTr("Exportable Apps")
     modal: true
     standardButtons: Dialog.Close
+    anchors.centerIn: Overlay.overlay
 
     width: 400
     height: 500
@@ -71,7 +72,6 @@ Dialog {
                         Text {
                             text: model.path
                             font.pixelSize: 12
-                            color: palette.mid
                         }
                     }
 

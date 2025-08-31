@@ -11,9 +11,10 @@ Dialog {
     id: createDialog
     title: qsTr("Create a Distrobox")
     modal: true
+    anchors.centerIn: Overlay.overlay
 
-    width: 500
-    height: 600
+    width: Math.min(500, Overlay.overlay ? Overlay.overlay.width * 0.9 : 500)
+    height: Math.min(600, Overlay.overlay ? Overlay.overlay.height * 0.9 : 600)
 
     // Properties for the guided creation
     property alias nameField: nameField
@@ -82,7 +83,7 @@ Dialog {
                             TextField {
                                 id: nameField
                                 Layout.fillWidth: true
-                                placeholderText: "Enter container name"
+                                placeholderText: qsTr("Enter container name")
                             }
 
                             Label {
@@ -115,7 +116,7 @@ Dialog {
                                 TextField {
                                     id: homeDirField
                                     Layout.fillWidth: true
-                                    placeholderText: "Leave empty for default"
+                                    placeholderText: qsTr("Leave empty for default")
                                 }
 
                                 Button {
@@ -158,7 +159,6 @@ Dialog {
 
                             Text {
                                 text: qsTr("Specify volumes in the format 'host_path:container_path'")
-                                color: palette.mid
                                 font.pixelSize: 11
                                 Layout.fillWidth: true
                                 wrapMode: Text.WordWrap
@@ -241,121 +241,131 @@ Dialog {
             }
 
             // From File page
-            ColumnLayout {
+            ScrollView {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
-                spacing: 20
+                contentWidth: availableWidth
 
-                GroupBox {
-                    title: qsTr("Assemble from File")
-                    Layout.fillWidth: true
+                ColumnLayout {
+                    anchors.fill: parent
+                    anchors.margins: 24
+                    spacing: 20
 
-                    ColumnLayout {
-                        anchors.fill: parent
-                        spacing: 12
+                    GroupBox {
+                        title: qsTr("Assemble from File")
+                        Layout.fillWidth: true
 
-                        Text {
-                            text: qsTr("Create a container from an assemble file")
-                            color: palette.mid
-                            Layout.fillWidth: true
-                        }
+                        ColumnLayout {
+                            anchors.fill: parent
+                            spacing: 12
 
-                        RowLayout {
-                            Layout.fillWidth: true
-
-                            TextField {
-                                id: filePathField
+                            Text {
+                                text: qsTr("Create a container from an assemble file")
                                 Layout.fillWidth: true
-                                placeholderText: "Select assemble file..."
-                                text: createDialog.assembleFilePath
-                                readOnly: true
                             }
 
-                            Button {
-                                text: qsTr("Browse...")
-                                onClicked: {
-                                    assembleFileDialog.open()
+                            RowLayout {
+                                Layout.fillWidth: true
+
+                                TextField {
+                                    id: filePathField
+                                    Layout.fillWidth: true
+                                    placeholderText: qsTr("Select assemble file...")
+                                    text: createDialog.assembleFilePath
+                                    readOnly: true
+                                }
+
+                                Button {
+                                    text: qsTr("Browse...")
+                                    onClicked: {
+                                        assembleFileDialog.open()
+                                    }
                                 }
                             }
                         }
                     }
-                }
 
-                RowLayout {
-                    Layout.fillWidth: true
-                    Layout.alignment: Qt.AlignCenter
+                    RowLayout {
+                        Layout.fillWidth: true
+                        Layout.alignment: Qt.AlignCenter
 
-                    Item { Layout.fillWidth: true }
+                        Item { Layout.fillWidth: true }
 
-                    Button {
-                        text: qsTr("Create")
-                        enabled: createDialog.assembleFilePath !== ""
-                        highlighted: true
-                        onClicked: {
-                            createFromFile()
+                        Button {
+                            text: qsTr("Create")
+                            enabled: createDialog.assembleFilePath !== ""
+                            highlighted: true
+                            onClicked: {
+                                createFromFile()
+                            }
                         }
+
+                        Item { Layout.fillWidth: true }
                     }
 
-                    Item { Layout.fillWidth: true }
-                }
-
-                Item {
-                    Layout.fillHeight: true
+                    Item {
+                        Layout.fillHeight: true
+                    }
                 }
             }
 
             // From URL page
-            ColumnLayout {
+            ScrollView {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
-                spacing: 20
+                contentWidth: availableWidth
 
-                GroupBox {
-                    title: qsTr("From URL")
-                    Layout.fillWidth: true
+                ColumnLayout {
+                    anchors.fill: parent
+                    anchors.margins: 24
+                    spacing: 20
 
-                    ColumnLayout {
-                        anchors.fill: parent
-                        spacing: 12
+                    GroupBox {
+                        title: qsTr("From URL")
+                        Layout.fillWidth: true
 
-                        Text {
-                            text: qsTr("Create a container from a remote URL")
-                            color: palette.mid
-                            Layout.fillWidth: true
-                        }
+                        ColumnLayout {
+                            anchors.fill: parent
+                            spacing: 12
 
-                        TextField {
-                            id: urlField
-                            Layout.fillWidth: true
-                            placeholderText: "https://example.com/container.yaml"
-                            text: createDialog.assembleUrl
-                            onTextChanged: {
-                                createDialog.assembleUrl = text
+                            Text {
+                                text: qsTr("Create a container from a remote URL")
+                                Layout.fillWidth: true
+                            }
+
+                            TextField {
+                                id: urlField
+                                Layout.fillWidth: true
+                                placeholderText: "https://example.com/container.yaml"
+                                text: createDialog.assembleUrl
+                                onTextChanged: {
+                                    createDialog.assembleUrl = text
+                                }
                             }
                         }
                     }
-                }
 
-                RowLayout {
-                    Layout.fillWidth: true
-                    Layout.alignment: Qt.AlignCenter
+                    RowLayout {
+                        Layout.fillWidth: true
+                        Layout.alignment: Qt.AlignCenter
 
-                    Item { Layout.fillWidth: true }
+                        Item { Layout.fillWidth: true }
 
-                    Button {
-                        text: qsTr("Create")
-                        enabled: createDialog.assembleUrl.trim() !== ""
-                        highlighted: true
-                        onClicked: {
-                            createFromUrl()
+                        Button {
+                            text: qsTr("Create")
+                            enabled: createDialog.assembleUrl.trim() !== ""
+                            highlighted: true
+                            onClicked: {
+                                createFromUrl()
+                            }
                         }
+
+                        Item { Layout.fillWidth: true }
                     }
 
-                    Item { Layout.fillWidth: true }
-                }
-
-                Item {
-                    Layout.fillHeight: true
+                    Item {
+                        Layout.fillHeight: true
+                    }
                 }
             }
         }

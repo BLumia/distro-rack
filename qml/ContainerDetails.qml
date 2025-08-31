@@ -58,20 +58,10 @@ Item {
                     color: "transparent"
                     radius: 8
 
-                    Button {
+                    ThemedIcon {
                         anchors.centerIn: parent
-                        width: 48
-                        height: 48
-                        flat: true
-                        enabled: false
-                        icon.name: {
-                        if (containerDistroIconName) {
-                            return containerDistroIconName;
-                        }
-                        return "distributor-logo-generic";
-                        }
-                        icon.width: 48
-                        icon.height: 48
+                        iconSourceSize: 48
+                        iconName: containerDistroIconName || "distributor-logo-generic"
                     }
                 }
 
@@ -91,7 +81,6 @@ Item {
 
                         Text {
                             text: containerImage
-                            color: palette.mid
                             font.pixelSize: 12
                         }
 
@@ -157,7 +146,6 @@ Item {
 
                     Text {
                         text: containerStatus || "Unknown"
-                        color: palette.mid
                         font.pixelSize: 12
                     }
                 }
@@ -188,7 +176,6 @@ Item {
                             anchors.verticalCenter: parent.verticalCenter
                             anchors.rightMargin: 16
                             text: qsTr("Update all packages")
-                            color: palette.mid
                             font.pixelSize: 11
                         }
                     }
@@ -200,9 +187,8 @@ Item {
 
                          onClicked: {
                              if (containerName) {
-                                 exportableAppsDialog.containerName = containerName;
-                                 stateManager.distroboxManager.listExportableApps(containerName);
-                                 exportableAppsDialog.open();
+
+                                 stateManager.showExportableApps(containerName);
                              }
                          }
 
@@ -211,7 +197,6 @@ Item {
                             anchors.verticalCenter: parent.verticalCenter
                             anchors.rightMargin: 16
                             text: qsTr("Manage exportable applications")
-                            color: palette.mid
                             font.pixelSize: 11
                         }
                     }
@@ -233,7 +218,6 @@ Item {
                             anchors.verticalCenter: parent.verticalCenter
                             anchors.rightMargin: 16
                             text: qsTr("Create a copy of this container")
-                            color: palette.mid
                             font.pixelSize: 11
                         }
                     }
@@ -254,7 +238,6 @@ Item {
                             anchors.verticalCenter: parent.verticalCenter
                             anchors.rightMargin: 16
                             text: qsTr("Create desktop shortcut for this container")
-                            color: palette.mid
                             font.pixelSize: 11
                         }
                     }
@@ -281,7 +264,6 @@ Item {
                             anchors.verticalCenter: parent.verticalCenter
                             anchors.rightMargin: 16
                             text: qsTr("Install packages into this container")
-                            color: palette.mid
                             font.pixelSize: 11
                         }
                     }
@@ -368,6 +350,7 @@ Item {
         title: qsTr("Clone Container")
         modal: true
         standardButtons: Dialog.Ok | Dialog.Cancel
+        anchors.centerIn: Overlay.overlay
 
         width: 400
         height: 200
@@ -491,6 +474,15 @@ Item {
 
         function onTerminalSpawned() {
             console.log("Terminal spawned successfully");
+        }
+    }
+
+    // 公开方法，供 Main.qml 调用
+    function showExportableApps(containerName) {
+        if (containerName) {
+            exportableAppsDialog.containerName = containerName;
+            stateManager.distroboxManager.listExportableApps(containerName);
+            exportableAppsDialog.open();
         }
     }
 }

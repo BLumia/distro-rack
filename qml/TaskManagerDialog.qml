@@ -12,6 +12,7 @@ Dialog {
     title: qsTr("Running Tasks")
     modal: true
     standardButtons: Dialog.Close
+    anchors.centerIn: Overlay.overlay
 
     width: 600
     height: 500
@@ -108,7 +109,6 @@ Dialog {
                                 Text {
                                     text: model.description
                                     font.pixelSize: 11
-                                    color: palette.mid
                                     wrapMode: Text.WordWrap
                                     width: parent.width
                                 }
@@ -235,7 +235,6 @@ Dialog {
                     Text {
                         id: detailTaskDescription
                         font.pixelSize: 11
-                        color: palette.mid
                         wrapMode: Text.WordWrap
                         width: parent.width
                     }

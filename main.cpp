@@ -36,6 +36,7 @@ int main(int argc, char *argv[])
     }
 
     app.setWindowIcon(QIcon::fromTheme("terminal-distrobox-icon"));
+    app.setApplicationVersion(QStringLiteral(DISTRO_RACK_VERSION));
 
     QQmlApplicationEngine engine;
     QQmlFileSelector* selector = new QQmlFileSelector(&engine);

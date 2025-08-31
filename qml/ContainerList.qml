@@ -10,7 +10,7 @@ import DistroRack 1.0
 Item {
     id: containerList
 
-    property int containerCount: stateManager.containerModel ? stateManager.containerModel.rowCount() : 0
+    property alias containerCount: listView.count
     property bool autoSelectFirst: true  // 是否自动选择第一个容器
 
     signal containerSelected(string containerName)

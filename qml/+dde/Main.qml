@@ -45,7 +45,7 @@ D.ApplicationWindow {
             hoverEnabled: enabled
             activeFocusOnTab: true
             icon {
-                name: "sidebar"
+                name: "action_add"
             }
             background: Rectangle {
                 property D.Palette pressedColor: D.Palette {
@@ -103,6 +103,24 @@ D.ApplicationWindow {
             }
             D.MenuSeparator {}
             D.ThemeMenu {}
+            D.HelpAction {
+                onTriggered: function() {
+                    Qt.openUrlExternally("https://github.com/BLumia/distro-rack")
+                }
+            }
+            D.AboutAction {
+                aboutDialog: D.AboutDialog {
+                    productName: qsTr("DistroRack DDE")
+                    productIcon: titleBar.icon.name
+                    description: qsTr("A Qt6-based GUI for managing Distrobox containers")
+                    version: Qt.application.version
+                    websiteName: "GitHub"
+                    websiteLink: "https://github.com/BLumia/distro-rack"
+                    header: D.DialogTitleBar {
+                        enableInWindowBlendBlur: false
+                    }
+                }
+            }
             D.QuitAction {}
         }
     }
@@ -134,24 +152,6 @@ D.ApplicationWindow {
     // Dialog for creating new containers
     CreateContainerDialog {
         id: createContainerDialog
-
-        onAccepted: {
-            // 当用户点击OK时，调用创建容器函数
-            if (createContainerDialog.nameField.text && createContainerDialog.imageCombo.currentText) {
-                // 收集卷信息
-                var volumes = []
-                // TODO: 从卷列表中收集卷信息
-
-                stateManager.distroboxManager.createContainer(
-                    createContainerDialog.nameField.text,
-                    createContainerDialog.imageCombo.currentText,
-                    createContainerDialog.nvidiaCheckBox.checked,
-                    createContainerDialog.initCheckBox.checked,
-                    createContainerDialog.homeDirField.text,
-                    volumes
-                )
-            }
-        }
     }
 
 
@@ -161,35 +161,10 @@ D.ApplicationWindow {
     }
 
     // Initial state when no containers exist
-    Rectangle {
+    NoContainersView {
         id: noContainersView
         anchors.fill: parent
-        visible: containerList.count === 0
-        color: root.palette.window
-
-        ColumnLayout {
-            anchors.centerIn: parent
-
-            Label {
-                text: qsTr("No Containers")
-                font.pointSize: 24
-                Layout.alignment: Qt.AlignHCenter
-            }
-
-            Label {
-                text: qsTr("Get started by creating a new container")
-                Layout.alignment: Qt.AlignHCenter
-            }
-
-            Button {
-                text: qsTr("Create Container")
-                icon.name: "list-add"
-                Layout.alignment: Qt.AlignHCenter
-                onClicked: {
-                    createContainerDialog.open()
-                }
-            }
-        }
+        visible: containerList.containerCount === 0
     }
 
     // 连接StateManager信号
@@ -202,7 +177,8 @@ D.ApplicationWindow {
 
         function onExportableAppsRequested(containerName) {
             console.log("Exportable apps requested for: " + containerName)
-            // TODO: 打开 ExportableAppsDialog
+            // 转发给 ContainerDetails 中的 ExportableAppsDialog
+            containerDetails.showExportableApps(containerName)
         }
 
         function onCreateContainerRequested() {
@@ -210,22 +186,18 @@ D.ApplicationWindow {
         }
     }
 
-    // 连接DistroboxManager信号
     Connections {
         target: stateManager.distroboxManager
 
         function onContainerCreated() {
-            // 容器创建成功后显示提示
             console.log("Container created successfully")
         }
 
         function onContainerDeleted() {
-            // 容器删除成功后显示提示
             console.log("Container deleted successfully")
         }
 
         function onCommandError(error) {
-            // 显示错误信息
             console.log("Command error: " + error)
         }
     }
@@ -236,6 +208,7 @@ D.ApplicationWindow {
         title: qsTr("Upgrade All Containers")
         modal: true
         standardButtons: Dialog.Yes | Dialog.No
+        anchors.centerIn: Overlay.overlay
 
         width: 400
         height: 150
@@ -258,6 +231,7 @@ D.ApplicationWindow {
         title: qsTr("Stop All Containers")
         modal: true
         standardButtons: Dialog.Yes | Dialog.No
+        anchors.centerIn: Overlay.overlay
 
         width: 400
         height: 150
