@@ -19,61 +19,32 @@ jobs:
     - name: Update package lists and install basic tools
       run: |
         apt update
-        apt install -y git ca-certificates curl
+        apt install -y build-essential devscripts dh-make
 
     - name: Checkout repository
       uses: actions/checkout@v4
 
     - name: Install build dependencies
       run: |
-        apt install -y \
-          build-essential \
-          cmake \
-          pkg-config \
-          qt6-base-dev \
-          qt6-declarative-dev \
-          qt6-tools-dev \
-          qt6-tools-dev-tools \
-          qt6-l10n-tools \
-          libqt6core6 \
-          libqt6gui6 \
-          libqt6quick6 \
-          libqt6qml6 \
-          qml6-module-qtquick \
-          qml6-module-qtquick-controls \
-          qml6-module-qtquick-layouts \
-          qml6-module-qtquick-window \
-          libdtk6declarative \
-          libdtk6declarative-dev
-
-    - name: Create build directory
-      run: mkdir -p build
-
-    - name: Configure CMake
-      working-directory: build
-      run: |
-        cmake .. \
-          -DCMAKE_BUILD_TYPE=Release \
-          -DCMAKE_INSTALL_PREFIX=/usr
-
-    - name: Build project
-      working-directory: build
-      run: make -j$(nproc)
+        mk-build-deps -i -t "apt-get -y" "./debian/control"
 
     - name: Create DEB package
-      working-directory: build
-      run: cpack -G DEB
+      run: debuild -us -uc
+
+    - name: Move deb to deb_package
+      run: |
+        rm ../*dbgsym*.deb
+        mkdir deb_package
+        cp ../*.deb deb_package
 
     - name: Get package info
       id: package_info
-      working-directory: build
       run: |
-        DEB_FILE=$(ls *.deb | head -1)
+        DEB_FILE=$(ls deb_package/*.deb | head -1)
         echo "deb_file=${DEB_FILE}" >> $GITHUB_OUTPUT
         echo "deb_name=$(basename ${DEB_FILE} .deb)" >> $GITHUB_OUTPUT
 
     - name: Verify DEB package
-      working-directory: build
       run: |
         echo "=== Package Contents ==="
         dpkg-deb --contents ${{ steps.package_info.outputs.deb_file }}
@@ -85,14 +56,14 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: ${{ steps.package_info.outputs.deb_name }}
-        path: build/*.deb
+        path: deb_package/*.deb
         if-no-files-found: error
 
     - name: Upload to release (if tag)
       if: startsWith(github.ref, 'refs/tags/')
       uses: softprops/action-gh-release@v2
       with:
-        files: build/*.deb
+        files: deb_package/*.deb
         draft: false
         prerelease: false
         generate_release_notes: true
