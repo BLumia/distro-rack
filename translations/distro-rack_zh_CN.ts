@@ -342,6 +342,7 @@
     </message>
     <message>
         <location filename="../qml/Main.qml" line="89"/>
+        <location filename="../qml/+dde/Main.qml" line="107"/>
         <source>Settings</source>
         <translation>设定</translation>
     </message>
@@ -350,14 +351,14 @@
         <translation type="vanished">没有容器</translation>
     </message>
     <message>
-        <location filename="../qml/Main.qml" line="181"/>
-        <location filename="../qml/+dde/Main.qml" line="208"/>
+        <location filename="../qml/Main.qml" line="187"/>
+        <location filename="../qml/+dde/Main.qml" line="221"/>
         <source>Upgrade All Containers</source>
         <translation>更新所有容器</translation>
     </message>
     <message>
-        <location filename="../qml/Main.qml" line="190"/>
-        <location filename="../qml/+dde/Main.qml" line="217"/>
+        <location filename="../qml/Main.qml" line="196"/>
+        <location filename="../qml/+dde/Main.qml" line="230"/>
         <source>Are you sure you want to upgrade all containers?
 
 This operation may take a very long time and will update all packages in every container.</source>
@@ -366,14 +367,14 @@ This operation may take a very long time and will update all packages in every c
 此操作可能持续非常长时间，会升级所有容器中的所有软件包。</translation>
     </message>
     <message>
-        <location filename="../qml/Main.qml" line="204"/>
-        <location filename="../qml/+dde/Main.qml" line="231"/>
+        <location filename="../qml/Main.qml" line="210"/>
+        <location filename="../qml/+dde/Main.qml" line="244"/>
         <source>Stop All Containers</source>
         <translation>停止所有容器</translation>
     </message>
     <message>
-        <location filename="../qml/Main.qml" line="213"/>
-        <location filename="../qml/+dde/Main.qml" line="240"/>
+        <location filename="../qml/Main.qml" line="219"/>
+        <location filename="../qml/+dde/Main.qml" line="253"/>
         <source>Are you sure you want to stop all running containers?
 
 This will shut down all containers but will not delete them.</source>
@@ -384,12 +385,12 @@ This will shut down all containers but will not delete them.</source>
     <message>
         <location filename="../qml/+dde/Main.qml" line="18"/>
         <location filename="../qml/+dde/Main.qml" line="70"/>
-        <location filename="../qml/+dde/Main.qml" line="113"/>
+        <location filename="../qml/+dde/Main.qml" line="120"/>
         <source>DistroRack DDE</source>
         <translation>DistroRack DDE</translation>
     </message>
     <message>
-        <location filename="../qml/+dde/Main.qml" line="115"/>
+        <location filename="../qml/+dde/Main.qml" line="122"/>
         <source>A Qt6-based GUI for managing Distrobox containers</source>
         <translation>一个基于 Qt6 的用于管理 Distrobox 容器的图形化客户端</translation>
     </message>
@@ -415,6 +416,29 @@ This will shut down all containers but will not delete them.</source>
         <location filename="../qml/NoContainersView.qml" line="37"/>
         <source>Refresh</source>
         <translation>刷新</translation>
+    </message>
+</context>
+<context>
+    <name>SettingsDialog</name>
+    <message>
+        <location filename="../qml/SettingsDialog.qml" line="12"/>
+        <source>Settings</source>
+        <translation>设定</translation>
+    </message>
+    <message>
+        <location filename="../qml/SettingsDialog.qml" line="28"/>
+        <source>Terminal</source>
+        <translation>终端</translation>
+    </message>
+    <message>
+        <location filename="../qml/SettingsDialog.qml" line="33"/>
+        <source>General</source>
+        <translation>通用</translation>
+    </message>
+    <message>
+        <location filename="../qml/SettingsDialog.qml" line="56"/>
+        <source>General settings will be added here in the future</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -448,6 +472,203 @@ This will shut down all containers but will not delete them.</source>
         <location filename="../qml/TaskManagerDialog.qml" line="198"/>
         <source>Task Details</source>
         <translation>任务详情</translation>
+    </message>
+</context>
+<context>
+    <name>TerminalSettingsTab</name>
+    <message>
+        <location filename="../qml/TerminalSettingsTab.qml" line="19"/>
+        <source>Terminal Selection</source>
+        <translation>选择终端</translation>
+    </message>
+    <message>
+        <location filename="../qml/TerminalSettingsTab.qml" line="27"/>
+        <source>Select your preferred terminal emulator:</source>
+        <translation>选择你偏好的终端模拟器:</translation>
+    </message>
+    <message>
+        <location filename="../qml/TerminalSettingsTab.qml" line="66"/>
+        <source>Command: %1</source>
+        <translation>命令: %1</translation>
+    </message>
+    <message>
+        <location filename="../qml/TerminalSettingsTab.qml" line="73"/>
+        <source>Custom terminal</source>
+        <translation>自定义终端</translation>
+    </message>
+    <message>
+        <location filename="../qml/TerminalSettingsTab.qml" line="73"/>
+        <source>Built-in terminal</source>
+        <translation>内置终端</translation>
+    </message>
+    <message>
+        <location filename="../qml/TerminalSettingsTab.qml" line="82"/>
+        <source>✓ Available</source>
+        <translation>✓ 可用</translation>
+    </message>
+    <message>
+        <location filename="../qml/TerminalSettingsTab.qml" line="82"/>
+        <source>✗ Not found</source>
+        <translation>✗ 未找到</translation>
+    </message>
+    <message>
+        <location filename="../qml/TerminalSettingsTab.qml" line="89"/>
+        <source>Edit</source>
+        <translation>编辑</translation>
+    </message>
+    <message>
+        <location filename="../qml/TerminalSettingsTab.qml" line="97"/>
+        <source>Remove</source>
+        <translation>移除</translation>
+    </message>
+    <message>
+        <location filename="../qml/TerminalSettingsTab.qml" line="112"/>
+        <location filename="../qml/TerminalSettingsTab.qml" line="189"/>
+        <source>Add Custom Terminal</source>
+        <translation>添加自定义终端</translation>
+    </message>
+    <message>
+        <location filename="../qml/TerminalSettingsTab.qml" line="122"/>
+        <source>Detect Default</source>
+        <translation>检测默认</translation>
+    </message>
+    <message>
+        <location filename="../qml/TerminalSettingsTab.qml" line="128"/>
+        <source>Default terminal detected: %1</source>
+        <translation>检测到的默认终端: %1</translation>
+    </message>
+    <message>
+        <location filename="../qml/TerminalSettingsTab.qml" line="136"/>
+        <location filename="../qml/TerminalSettingsTab.qml" line="346"/>
+        <source>Reset to Defaults</source>
+        <translation>重置回默认</translation>
+    </message>
+    <message>
+        <location filename="../qml/TerminalSettingsTab.qml" line="160"/>
+        <source>Current Selection</source>
+        <translation>当前选项</translation>
+    </message>
+    <message>
+        <location filename="../qml/TerminalSettingsTab.qml" line="169"/>
+        <source>Currently selected: %1</source>
+        <translation>当前选择了：%1</translation>
+    </message>
+    <message>
+        <location filename="../qml/TerminalSettingsTab.qml" line="170"/>
+        <source>No terminal manager available</source>
+        <translation>没有可用的终端模拟器</translation>
+    </message>
+    <message>
+        <location filename="../qml/TerminalSettingsTab.qml" line="177"/>
+        <source>System default: %1</source>
+        <translation>系统默认：%1</translation>
+    </message>
+    <message>
+        <location filename="../qml/TerminalSettingsTab.qml" line="189"/>
+        <source>Edit Terminal</source>
+        <translation>编辑终端</translation>
+    </message>
+    <message>
+        <location filename="../qml/TerminalSettingsTab.qml" line="226"/>
+        <source>Terminal Configuration</source>
+        <translation>终端配置</translation>
+    </message>
+    <message>
+        <location filename="../qml/TerminalSettingsTab.qml" line="238"/>
+        <source>Name:</source>
+        <translation>名称:</translation>
+    </message>
+    <message>
+        <location filename="../qml/TerminalSettingsTab.qml" line="242"/>
+        <source>e.g., my-terminal</source>
+        <translation>例如：my-terminal</translation>
+    </message>
+    <message>
+        <location filename="../qml/TerminalSettingsTab.qml" line="246"/>
+        <source>Display Name:</source>
+        <translation>显示名称:</translation>
+    </message>
+    <message>
+        <location filename="../qml/TerminalSettingsTab.qml" line="250"/>
+        <source>e.g., My Custom Terminal</source>
+        <translation>例如：俺嘞终端</translation>
+    </message>
+    <message>
+        <location filename="../qml/TerminalSettingsTab.qml" line="253"/>
+        <source>Command:</source>
+        <translation>命令:</translation>
+    </message>
+    <message>
+        <location filename="../qml/TerminalSettingsTab.qml" line="257"/>
+        <source>e.g., gnome-terminal</source>
+        <translation>例如：gnome-terminal</translation>
+    </message>
+    <message>
+        <location filename="../qml/TerminalSettingsTab.qml" line="260"/>
+        <source>Separator:</source>
+        <translation>分隔符:</translation>
+    </message>
+    <message>
+        <location filename="../qml/TerminalSettingsTab.qml" line="264"/>
+        <source>e.g., -e or --</source>
+        <translation>例如：-e 或是 --</translation>
+    </message>
+    <message>
+        <location filename="../qml/TerminalSettingsTab.qml" line="269"/>
+        <source>The separator is used between the terminal command and the actual command to execute. Common values are &apos;-e&apos;, &apos;--&apos;, or &apos;-x&apos;.</source>
+        <translation>用以分割终端命令和实际终端所需执行的命令的分割符。常见值有 &apos;-e&apos;、&apos;--&apos; 与 &apos;-x&apos;。</translation>
+    </message>
+    <message>
+        <location filename="../qml/TerminalSettingsTab.qml" line="279"/>
+        <source>Name and command cannot be empty!</source>
+        <translation>名称和命令不能为空！</translation>
+    </message>
+    <message>
+        <location filename="../qml/TerminalSettingsTab.qml" line="303"/>
+        <source>Terminal updated successfully</source>
+        <translation>终端更新成功</translation>
+    </message>
+    <message>
+        <location filename="../qml/TerminalSettingsTab.qml" line="304"/>
+        <source>Terminal added successfully</source>
+        <translation>终端添加成功</translation>
+    </message>
+    <message>
+        <location filename="../qml/TerminalSettingsTab.qml" line="308"/>
+        <source>Failed to save terminal configuration. Please check if the command is available.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/TerminalSettingsTab.qml" line="317"/>
+        <source>Remove Terminal</source>
+        <translation>移除终端</translation>
+    </message>
+    <message>
+        <location filename="../qml/TerminalSettingsTab.qml" line="328"/>
+        <source>Are you sure you want to remove the terminal &apos;%1&apos;?</source>
+        <translation>你确定要移除终端 &apos;%1&apos; 吗?</translation>
+    </message>
+    <message>
+        <location filename="../qml/TerminalSettingsTab.qml" line="336"/>
+        <source>Terminal removed successfully</source>
+        <translation>终端移除成功</translation>
+    </message>
+    <message>
+        <location filename="../qml/TerminalSettingsTab.qml" line="355"/>
+        <source>Are you sure you want to reset all terminal settings to defaults?
+
+This will remove all custom terminals and reset the selection to the system default.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/TerminalSettingsTab.qml" line="364"/>
+        <source>Settings reset to defaults</source>
+        <translation>设置已重置为默认</translation>
+    </message>
+    <message>
+        <location filename="../qml/TerminalSettingsTab.qml" line="374"/>
+        <source>Error</source>
+        <translation>错误</translation>
     </message>
 </context>
 </TS>

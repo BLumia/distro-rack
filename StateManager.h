@@ -12,10 +12,10 @@
 #include "TaskModel.h"
 #include "ContainerModel.h"
 #include "ExportableAppsModel.h"
+#include "TerminalManager.h"
 
 // Forward declarations
 class DistroboxManager;
-class TerminalManager;
 
 // central state manager
 class StateManager : public QObject
@@ -24,6 +24,7 @@ class StateManager : public QObject
     Q_PROPERTY(TaskModel* taskModel READ taskModel CONSTANT)
     Q_PROPERTY(ContainerModel* containerModel READ containerModel CONSTANT)
     Q_PROPERTY(ExportableAppsModel* exportableAppsModel READ exportableAppsModel CONSTANT)
+    Q_PROPERTY(TerminalManager* terminalManager READ terminalManager CONSTANT)
     Q_PROPERTY(QString selectedContainerName READ selectedContainerName WRITE setSelectedContainerName NOTIFY selectedContainerNameChanged)
     Q_PROPERTY(QString selectedTaskId READ selectedTaskId WRITE setSelectedTaskId NOTIFY selectedTaskIdChanged)
     Q_PROPERTY(DistroboxManager* distroboxManager READ distroboxManager CONSTANT)

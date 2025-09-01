@@ -103,6 +103,13 @@ D.ApplicationWindow {
             }
             D.MenuSeparator {}
             D.ThemeMenu {}
+            MenuItem {
+                text: qsTr("Settings")
+                icon.name: "preferences-system"
+                onTriggered: {
+                    settingsDialog.open()
+                }
+            }
             D.HelpAction {
                 onTriggered: function() {
                     Qt.openUrlExternally("https://github.com/BLumia/distro-rack")
@@ -158,6 +165,12 @@ D.ApplicationWindow {
     // Task manager dialog
     TaskManagerDialog {
         id: taskManagerDialog
+    }
+
+    // Settings dialog
+    SettingsDialog {
+        id: settingsDialog
+        terminalManager: stateManager.terminalManager
     }
 
     // Initial state when no containers exist

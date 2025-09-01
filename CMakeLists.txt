@@ -47,6 +47,8 @@ qt6_add_qml_module(distro-rack
         qml/TaskManagerDialog.qml
         qml/NoContainersView.qml
         qml/ThemedIcon.qml
+        qml/SettingsDialog.qml
+        qml/TerminalSettingsTab.qml
         qml/+dde/ThemedIcon.qml
 )
 

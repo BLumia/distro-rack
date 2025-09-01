@@ -89,7 +89,7 @@ ApplicationWindow {
                         text: qsTr("Settings")
                         icon.name: "preferences-system"
                         onTriggered: {
-                            // Open settings dialog
+                            settingsDialog.open()
                         }
                     }
                 }
@@ -128,6 +128,12 @@ ApplicationWindow {
     // Task manager dialog
     TaskManagerDialog {
         id: taskManagerDialog
+    }
+
+    // Settings dialog
+    SettingsDialog {
+        id: settingsDialog
+        terminalManager: stateManager.terminalManager
     }
 
     // Initial state when no containers exist
