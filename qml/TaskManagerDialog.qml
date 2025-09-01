@@ -106,7 +106,7 @@ Dialog {
                                     }
                                 }
 
-                                Text {
+                                Label {
                                     text: model.description
                                     font.pixelSize: 11
                                     wrapMode: Text.WordWrap
@@ -232,7 +232,7 @@ Dialog {
                         color: palette.windowText
                     }
 
-                    Text {
+                    Label {
                         id: detailTaskDescription
                         font.pixelSize: 11
                         wrapMode: Text.WordWrap

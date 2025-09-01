@@ -157,7 +157,7 @@ Dialog {
                             anchors.fill: parent
                             spacing: 12
 
-                            Text {
+                            Label {
                                 text: qsTr("Specify volumes in the format 'host_path:container_path'")
                                 font.pixelSize: 11
                                 Layout.fillWidth: true
@@ -197,7 +197,7 @@ Dialog {
                                     width: volumesList.width
                                     spacing: 8
 
-                                    Text {
+                                    Label {
                                         text: model.text
                                         Layout.fillWidth: true
                                         elide: Text.ElideRight
@@ -259,7 +259,7 @@ Dialog {
                             anchors.fill: parent
                             spacing: 12
 
-                            Text {
+                            Label {
                                 text: qsTr("Create a container from an assemble file")
                                 Layout.fillWidth: true
                             }
@@ -328,7 +328,7 @@ Dialog {
                             anchors.fill: parent
                             spacing: 12
 
-                            Text {
+                            Label {
                                 text: qsTr("Create a container from a remote URL")
                                 Layout.fillWidth: true
                             }

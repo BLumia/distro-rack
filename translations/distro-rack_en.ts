@@ -4,129 +4,129 @@
 <context>
     <name>ContainerDetails</name>
     <message>
-        <location filename="../qml/ContainerDetails.qml" line="88"/>
+        <location filename="../qml/ContainerDetails.qml" line="87"/>
         <source>Copy</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ContainerDetails.qml" line="108"/>
+        <location filename="../qml/ContainerDetails.qml" line="107"/>
         <source>Container Status</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ContainerDetails.qml" line="118"/>
+        <location filename="../qml/ContainerDetails.qml" line="117"/>
         <source>Status</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ContainerDetails.qml" line="126"/>
+        <location filename="../qml/ContainerDetails.qml" line="124"/>
         <source>Stop</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ContainerDetails.qml" line="137"/>
+        <location filename="../qml/ContainerDetails.qml" line="135"/>
         <source>Terminal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ContainerDetails.qml" line="157"/>
+        <location filename="../qml/ContainerDetails.qml" line="155"/>
         <source>Quick Actions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ContainerDetails.qml" line="165"/>
+        <location filename="../qml/ContainerDetails.qml" line="163"/>
         <source>Upgrade Container</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ContainerDetails.qml" line="178"/>
+        <location filename="../qml/ContainerDetails.qml" line="176"/>
         <source>Update all packages</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ContainerDetails.qml" line="185"/>
+        <location filename="../qml/ContainerDetails.qml" line="183"/>
         <source>Applications</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ContainerDetails.qml" line="199"/>
+        <location filename="../qml/ContainerDetails.qml" line="197"/>
         <source>Manage exportable applications</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ContainerDetails.qml" line="206"/>
-        <location filename="../qml/ContainerDetails.qml" line="350"/>
+        <location filename="../qml/ContainerDetails.qml" line="204"/>
+        <location filename="../qml/ContainerDetails.qml" line="348"/>
         <source>Clone Container</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ContainerDetails.qml" line="220"/>
+        <location filename="../qml/ContainerDetails.qml" line="218"/>
         <source>Create a copy of this container</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ContainerDetails.qml" line="227"/>
+        <location filename="../qml/ContainerDetails.qml" line="225"/>
         <source>Generate Desktop Entry</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ContainerDetails.qml" line="240"/>
+        <location filename="../qml/ContainerDetails.qml" line="238"/>
         <source>Create desktop shortcut for this container</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ContainerDetails.qml" line="249"/>
+        <location filename="../qml/ContainerDetails.qml" line="247"/>
         <source>Install %1 Package</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ContainerDetails.qml" line="251"/>
+        <location filename="../qml/ContainerDetails.qml" line="249"/>
         <source>Install Package</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ContainerDetails.qml" line="266"/>
+        <location filename="../qml/ContainerDetails.qml" line="264"/>
         <source>Install packages into this container</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ContainerDetails.qml" line="276"/>
+        <location filename="../qml/ContainerDetails.qml" line="274"/>
         <source>Danger Zone</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ContainerDetails.qml" line="284"/>
+        <location filename="../qml/ContainerDetails.qml" line="282"/>
         <source>Delete Desktop Entry</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ContainerDetails.qml" line="297"/>
+        <location filename="../qml/ContainerDetails.qml" line="295"/>
         <source>Remove desktop shortcut for this container</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ContainerDetails.qml" line="305"/>
-        <location filename="../qml/ContainerDetails.qml" line="333"/>
+        <location filename="../qml/ContainerDetails.qml" line="303"/>
+        <location filename="../qml/ContainerDetails.qml" line="331"/>
         <source>Delete Container</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ContainerDetails.qml" line="316"/>
+        <location filename="../qml/ContainerDetails.qml" line="314"/>
         <source>Permanently remove this container and all its data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ContainerDetails.qml" line="365"/>
-        <source>Clone container: </source>
+        <location filename="../qml/ContainerDetails.qml" line="363"/>
+        <source>Clone container: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ContainerDetails.qml" line="371"/>
+        <location filename="../qml/ContainerDetails.qml" line="369"/>
         <source>Enter name for the new container:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ContainerDetails.qml" line="424"/>
+        <location filename="../qml/ContainerDetails.qml" line="422"/>
         <source>Select Package File</source>
         <translation type="unfinished"></translation>
     </message>
@@ -284,13 +284,23 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ExportableAppsDialog.qml" line="94"/>
+        <location filename="../qml/ExportableAppsDialog.qml" line="92"/>
         <source>Unexport</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/ExportableAppsDialog.qml" line="94"/>
+        <location filename="../qml/ExportableAppsDialog.qml" line="92"/>
         <source>Export</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/ExportableAppsDialog.qml" line="139"/>
+        <source>No Applications Found</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/ExportableAppsDialog.qml" line="146"/>
+        <source>No exportable applications were found in this container.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -418,17 +428,17 @@ This will shut down all containers but will not delete them.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/SettingsDialog.qml" line="28"/>
+        <location filename="../qml/SettingsDialog.qml" line="32"/>
         <source>Terminal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/SettingsDialog.qml" line="33"/>
+        <location filename="../qml/SettingsDialog.qml" line="37"/>
         <source>General</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/SettingsDialog.qml" line="56"/>
+        <location filename="../qml/SettingsDialog.qml" line="57"/>
         <source>General settings will be added here in the future</source>
         <translation type="unfinished"></translation>
     </message>
@@ -479,186 +489,186 @@ This will shut down all containers but will not delete them.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/TerminalSettingsTab.qml" line="66"/>
+        <location filename="../qml/TerminalSettingsTab.qml" line="67"/>
         <source>Command: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/TerminalSettingsTab.qml" line="73"/>
+        <location filename="../qml/TerminalSettingsTab.qml" line="74"/>
         <source>Custom terminal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/TerminalSettingsTab.qml" line="73"/>
+        <location filename="../qml/TerminalSettingsTab.qml" line="74"/>
         <source>Built-in terminal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/TerminalSettingsTab.qml" line="82"/>
+        <location filename="../qml/TerminalSettingsTab.qml" line="83"/>
         <source>✓ Available</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/TerminalSettingsTab.qml" line="82"/>
+        <location filename="../qml/TerminalSettingsTab.qml" line="83"/>
         <source>✗ Not found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/TerminalSettingsTab.qml" line="89"/>
+        <location filename="../qml/TerminalSettingsTab.qml" line="90"/>
         <source>Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/TerminalSettingsTab.qml" line="97"/>
+        <location filename="../qml/TerminalSettingsTab.qml" line="98"/>
         <source>Remove</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/TerminalSettingsTab.qml" line="112"/>
-        <location filename="../qml/TerminalSettingsTab.qml" line="189"/>
+        <location filename="../qml/TerminalSettingsTab.qml" line="113"/>
+        <location filename="../qml/TerminalSettingsTab.qml" line="190"/>
         <source>Add Custom Terminal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/TerminalSettingsTab.qml" line="122"/>
+        <location filename="../qml/TerminalSettingsTab.qml" line="123"/>
         <source>Detect Default</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/TerminalSettingsTab.qml" line="128"/>
+        <location filename="../qml/TerminalSettingsTab.qml" line="129"/>
         <source>Default terminal detected: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/TerminalSettingsTab.qml" line="136"/>
-        <location filename="../qml/TerminalSettingsTab.qml" line="346"/>
+        <location filename="../qml/TerminalSettingsTab.qml" line="137"/>
+        <location filename="../qml/TerminalSettingsTab.qml" line="347"/>
         <source>Reset to Defaults</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/TerminalSettingsTab.qml" line="160"/>
+        <location filename="../qml/TerminalSettingsTab.qml" line="161"/>
         <source>Current Selection</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/TerminalSettingsTab.qml" line="169"/>
+        <location filename="../qml/TerminalSettingsTab.qml" line="170"/>
         <source>Currently selected: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/TerminalSettingsTab.qml" line="170"/>
+        <location filename="../qml/TerminalSettingsTab.qml" line="171"/>
         <source>No terminal manager available</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/TerminalSettingsTab.qml" line="177"/>
+        <location filename="../qml/TerminalSettingsTab.qml" line="178"/>
         <source>System default: %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/TerminalSettingsTab.qml" line="189"/>
+        <location filename="../qml/TerminalSettingsTab.qml" line="190"/>
         <source>Edit Terminal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/TerminalSettingsTab.qml" line="226"/>
+        <location filename="../qml/TerminalSettingsTab.qml" line="227"/>
         <source>Terminal Configuration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/TerminalSettingsTab.qml" line="238"/>
+        <location filename="../qml/TerminalSettingsTab.qml" line="239"/>
         <source>Name:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/TerminalSettingsTab.qml" line="242"/>
+        <location filename="../qml/TerminalSettingsTab.qml" line="243"/>
         <source>e.g., my-terminal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/TerminalSettingsTab.qml" line="246"/>
+        <location filename="../qml/TerminalSettingsTab.qml" line="247"/>
         <source>Display Name:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/TerminalSettingsTab.qml" line="250"/>
+        <location filename="../qml/TerminalSettingsTab.qml" line="251"/>
         <source>e.g., My Custom Terminal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/TerminalSettingsTab.qml" line="253"/>
+        <location filename="../qml/TerminalSettingsTab.qml" line="254"/>
         <source>Command:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/TerminalSettingsTab.qml" line="257"/>
+        <location filename="../qml/TerminalSettingsTab.qml" line="258"/>
         <source>e.g., gnome-terminal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/TerminalSettingsTab.qml" line="260"/>
+        <location filename="../qml/TerminalSettingsTab.qml" line="261"/>
         <source>Separator:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/TerminalSettingsTab.qml" line="264"/>
+        <location filename="../qml/TerminalSettingsTab.qml" line="265"/>
         <source>e.g., -e or --</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/TerminalSettingsTab.qml" line="269"/>
+        <location filename="../qml/TerminalSettingsTab.qml" line="270"/>
         <source>The separator is used between the terminal command and the actual command to execute. Common values are &apos;-e&apos;, &apos;--&apos;, or &apos;-x&apos;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/TerminalSettingsTab.qml" line="279"/>
+        <location filename="../qml/TerminalSettingsTab.qml" line="280"/>
         <source>Name and command cannot be empty!</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/TerminalSettingsTab.qml" line="303"/>
+        <location filename="../qml/TerminalSettingsTab.qml" line="304"/>
         <source>Terminal updated successfully</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/TerminalSettingsTab.qml" line="304"/>
+        <location filename="../qml/TerminalSettingsTab.qml" line="305"/>
         <source>Terminal added successfully</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/TerminalSettingsTab.qml" line="308"/>
+        <location filename="../qml/TerminalSettingsTab.qml" line="309"/>
         <source>Failed to save terminal configuration. Please check if the command is available.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/TerminalSettingsTab.qml" line="317"/>
+        <location filename="../qml/TerminalSettingsTab.qml" line="318"/>
         <source>Remove Terminal</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/TerminalSettingsTab.qml" line="328"/>
+        <location filename="../qml/TerminalSettingsTab.qml" line="329"/>
         <source>Are you sure you want to remove the terminal &apos;%1&apos;?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/TerminalSettingsTab.qml" line="336"/>
+        <location filename="../qml/TerminalSettingsTab.qml" line="337"/>
         <source>Terminal removed successfully</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/TerminalSettingsTab.qml" line="355"/>
+        <location filename="../qml/TerminalSettingsTab.qml" line="356"/>
         <source>Are you sure you want to reset all terminal settings to defaults?
 
 This will remove all custom terminals and reset the selection to the system default.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/TerminalSettingsTab.qml" line="364"/>
+        <location filename="../qml/TerminalSettingsTab.qml" line="365"/>
         <source>Settings reset to defaults</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../qml/TerminalSettingsTab.qml" line="374"/>
+        <location filename="../qml/TerminalSettingsTab.qml" line="375"/>
         <source>Error</source>
         <translation type="unfinished"></translation>
     </message>

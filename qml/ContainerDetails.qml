@@ -69,17 +69,16 @@ Item {
                     Layout.fillWidth: true
                     spacing: 4
 
-                    Text {
+                    Label {
                         text: containerName || "No Container Selected"
                         font.pixelSize: 24
                         font.bold: true
-                        color: palette.windowText
                     }
 
                     RowLayout {
                         spacing: 6
 
-                        Text {
+                        Label {
                             text: containerImage
                             font.pixelSize: 12
                         }
@@ -114,24 +113,23 @@ Item {
                     RowLayout {
                         Layout.fillWidth: true
 
-                        Text {
+                        Label {
                             text: qsTr("Status")
                             font.bold: true
-                            color: palette.windowText
                         }
 
                         Item { Layout.fillWidth: true }
 
-                                                 Button {
-                             text: qsTr("Stop")
-                             icon.name: "media-playback-stop-symbolic"
-                             visible: containerStatus && containerStatus.toLowerCase().startsWith("up")
-                             onClicked: {
-                                 if (containerName) {
-                                     stateManager.distroboxManager.stopContainer(containerName);
-                                 }
-                             }
-                         }
+                        Button {
+                            text: qsTr("Stop")
+                            icon.name: "media-playback-stop-symbolic"
+                            visible: containerStatus && containerStatus.toLowerCase().startsWith("up")
+                            onClicked: {
+                                if (containerName) {
+                                    stateManager.distroboxManager.stopContainer(containerName);
+                                }
+                            }
+                        }
 
                         Button {
                             text: qsTr("Terminal")
@@ -144,7 +142,7 @@ Item {
                         }
                     }
 
-                    Text {
+                    Label {
                         text: containerStatus || "Unknown"
                         font.pixelSize: 12
                     }
@@ -362,7 +360,7 @@ Item {
             spacing: 15
 
             Text {
-                text: qsTr("Clone container: ") + cloneContainerDialog.sourceContainerName
+                text: qsTr("Clone container: %1").arg(cloneContainerDialog.sourceContainerName)
                 font.bold: true
                 color: palette.windowText
             }

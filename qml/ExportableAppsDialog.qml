@@ -31,11 +31,10 @@ Dialog {
                 anchors.centerIn: parent
                 spacing: 20
 
-                Text {
+                Label {
                     text: qsTr("Loading applications...")
                     font.pointSize: 14
                     anchors.horizontalCenter: parent.horizontalCenter
-                    color: palette.windowText
                 }
 
                 BusyIndicator {
@@ -63,13 +62,12 @@ Dialog {
                         Layout.fillWidth: true
                         spacing: 2
 
-                        Text {
+                        Label {
                             text: model.name
                             font.bold: true
-                            color: palette.windowText
                         }
 
-                        Text {
+                        Label {
                             text: model.path
                             font.pixelSize: 12
                         }
@@ -138,14 +136,14 @@ Dialog {
                 spacing: 20
 
                 Text {
-                    text: "No Applications Found"
+                    text: qsTr("No Applications Found")
                     font.pointSize: 18
                     anchors.horizontalCenter: parent.horizontalCenter
                     color: palette.windowText
                 }
 
                 Text {
-                    text: "No exportable applications were found in this container."
+                    text: qsTr("No exportable applications were found in this container.")
                     anchors.horizontalCenter: parent.horizontalCenter
                     horizontalAlignment: Text.AlignHCenter
                     width: 300
