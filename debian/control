@@ -1,0 +1,33 @@
+Source: distro-rack
+Section: utils
+Priority: optional
+Maintainer: Gary Wang <opensource@blumia.net>
+Build-Depends: debhelper-compat (= 13), 
+               cmake,
+               libdtk6declarative-dev,
+               pkgconf,
+               qml6-module-qtquick,
+               qml6-module-qtquick-controls,
+               qml6-module-qtquick-layouts,
+               qml6-module-qtquick-window,
+               qt6-base-dev,
+               qt6-declarative-dev,
+               qt6-l10n-tools,
+               qt6-tools-dev,
+               qt6-tools-dev-tools
+Standards-Version: 4.7.2
+Homepage: https://github.com/BLumia/distro-rack
+Vcs-Browser: https://github.com/BLumia/distro-rack
+Vcs-Git: https://github.com/BLumia/distro-rack.git
+
+Package: distro-rack
+Architecture: any
+Depends: 
+ ${shlibs:Depends},
+ ${misc:Depends},
+ distrobox
+Suggests:libdtk6declarative
+Description: A Qt6-based GUI for managing Distrobox containers
+ DistroRack is a modern Qt6-based graphical user interface for managing 
+ Distrobox containers. It provides an intuitive way to create, manage, 
+ and interact with containerized Linux distributions.
