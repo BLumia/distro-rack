@@ -1,0 +1,8 @@
+Version 0.1.0
+~~~~~~~~~~~~~
+Released: 2025-09-01
+
+Features:
+ * Ability to manage distrobox containers
+ * Ability to export/unexport applications inside a container
+ * Support set and use custom terminal emulators

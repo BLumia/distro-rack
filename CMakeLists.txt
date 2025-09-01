@@ -13,7 +13,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 include(GNUInstallDirs)
 
 # Find required packages
-find_package(Qt6 6.8 REQUIRED COMPONENTS Core Quick LinguistTools)
+find_package(Qt6 6.8 REQUIRED COMPONENTS Core Quick QuickControls2 LinguistTools)
 
 # Enable automatic moc, rcc and uic
 qt6_standard_project_setup(
@@ -65,6 +65,7 @@ qt6_add_translations(distro-rack
 target_link_libraries(distro-rack PRIVATE
     Qt6::Core
     Qt6::Quick
+    Qt6::QuickControls2
 )
 
 # Install binary
@@ -98,8 +99,11 @@ set(CPACK_DEBIAN_PACKAGE_SECTION "utils")
 set(CPACK_DEBIAN_PACKAGE_PRIORITY "optional")
 set(CPACK_DEBIAN_PACKAGE_HOMEPAGE "https://github.com/blumia/distro-rack")
 
-# Dependencies - Qt6 and distrobox
-set(CPACK_DEBIAN_PACKAGE_DEPENDS "qt6-base-dev, qt6-declarative-dev, distrobox")
+# Enable automatic dependency detection
+set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS ON)
+
+# Keep distrobox as explicit dependency since it's a runtime requirement not detected by shlibdeps
+set(CPACK_DEBIAN_PACKAGE_DEPENDS "distrobox")
 set(CPACK_DEBIAN_PACKAGE_SUGGESTS "libdtk6declarative")
 
 # License file

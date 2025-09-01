@@ -1,13 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <component type="desktop-application">
   <id>net.blumia.distro-rack</id>
-
   <name>DistroRack</name>
   <name xml:lang="zh_CN">DistroRack</name>
-
   <summary>A Qt6-based GUI for managing Distrobox containers</summary>
   <summary xml:lang="zh_CN">基于 Qt6 的 Distrobox 容器管理图形界面</summary>
-
+  <metadata_license>MIT</metadata_license>
+  <project_license>MIT</project_license>
   <description>
     <p>
       DistroRack is a modern Qt6-based graphical user interface for managing Distrobox containers.
@@ -23,41 +22,27 @@
       <li>Monitor container tasks and operations</li>
       <li>Access container terminals</li>
     </ul>
-    <p xml:lang="zh_CN">
-      DistroRack 是一个现代化的基于 Qt6 的图形界面，用于管理 Distrobox 容器。
-      它提供了一种直观的方式来创建、管理和与容器化的 Linux 发行版进行交互。
-    </p>
-    <p xml:lang="zh_CN">
-      使用 DistroRack，您可以：
-    </p>
-    <ul xml:lang="zh_CN">
-      <li>创建和管理多个 Distrobox 容器</li>
-      <li>查看容器详情和状态</li>
-      <li>从容器中导出应用程序</li>
-      <li>监控容器任务和操作</li>
-      <li>访问容器终端</li>
-    </ul>
   </description>
-
-  <metadata_license>MIT</metadata_license>
-  <project_license>MIT</project_license>
-
-  <developer_name>Gary Wang</developer_name>
-
+  <developer id="net.blumia">
+    <name>Gary Wang</name>
+  </developer>
+  <requires>
+    <display_length>768</display_length>
+  </requires>
+  <recommends>
+    <control>pointing</control>
+    <control>keyboard</control>
+  </recommends>
+  <launchable type="desktop-id">net.blumia.distro-rack.desktop</launchable>
   <url type="homepage">https://github.com/blumia/distro-rack</url>
   <url type="bugtracker">https://github.com/blumia/distro-rack/issues</url>
-
-  <launchable type="desktop-id">net.blumia.distro-rack.desktop</launchable>
-
-  <provides>
-    <binary>distro-rack</binary>
-  </provides>
-
   <categories>
     <category>System</category>
     <category>Utility</category>
   </categories>
-
+  <provides>
+    <binary>distro-rack</binary>
+  </provides>
   <keywords>
     <keyword>distrobox</keyword>
     <keyword>container</keyword>
@@ -65,32 +50,17 @@
     <keyword>linux</keyword>
     <keyword>terminal</keyword>
   </keywords>
-
-  <keywords xml:lang="zh_CN">
-    <keyword>distrobox</keyword>
-    <keyword>容器</keyword>
-    <keyword>虚拟化</keyword>
-    <keyword>linux</keyword>
-    <keyword>终端</keyword>
-  </keywords>
-
-  <content_rating type="oars-1.1"/>
-
   <releases>
-    <release version="1.0.2" date="2025-08-28">
+    <release type="stable" version="0.1.0" date="2025-09-01T00:00:00Z">
       <description>
-        <p>Initial release</p>
-        <p xml:lang="zh_CN">初始版本</p>
+        <p>This release adds the following features:</p>
+        <ul>
+          <li>Ability to manage distrobox containers</li>
+          <li>Ability to export/unexport applications inside a container</li>
+          <li>Support set and use custom terminal emulators</li>
+        </ul>
       </description>
     </release>
   </releases>
-
-  <requires>
-    <display_length compare="ge">768</display_length>
-  </requires>
-
-  <recommends>
-    <control>pointing</control>
-    <control>keyboard</control>
-  </recommends>
+  <content_rating type="oars-1.1"/>
 </component>
