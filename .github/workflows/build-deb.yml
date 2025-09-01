@@ -19,7 +19,7 @@ jobs:
     - name: Update package lists and install basic tools
       run: |
         apt update
-        apt install -y git ca-certificates curl
+        apt install -y git ca-certificates curl file
 
     - name: Checkout repository
       uses: actions/checkout@v4
