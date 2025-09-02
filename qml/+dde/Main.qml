@@ -190,7 +190,6 @@ D.ApplicationWindow {
 
         function onExportableAppsRequested(containerName) {
             console.log("Exportable apps requested for: " + containerName)
-            // 转发给 ContainerDetails 中的 ExportableAppsDialog
             containerDetails.showExportableApps(containerName)
         }
 

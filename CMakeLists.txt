@@ -47,9 +47,10 @@ qt6_add_qml_module(distro-rack
         qml/TaskManagerDialog.qml
         qml/NoContainersView.qml
         qml/ThemedIcon.qml
+        qml/+dde/ThemedIcon.qml
+        qml/+kde/ThemedIcon.qml
         qml/SettingsDialog.qml
         qml/TerminalSettingsTab.qml
-        qml/+dde/ThemedIcon.qml
 )
 
 # Define package version for C++

@@ -18,11 +18,14 @@
 
 int main(int argc, char *argv[])
 {
-    QGuiApplication app(argc, argv);
-
     // set the application information for QSettings
     QCoreApplication::setOrganizationName("DistroRack");
     QCoreApplication::setApplicationName("DistroRack");
+
+    // Just in case the default theme doesn't have distributor-logo-distroname icons
+    QIcon::setFallbackThemeName("Papirus");
+
+    QGuiApplication app(argc, argv);
 
     // Load translations
     QTranslator translator;

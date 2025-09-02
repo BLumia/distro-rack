@@ -161,22 +161,18 @@ ApplicationWindow {
         }
     }
 
-    // 连接DistroboxManager信号
     Connections {
         target: stateManager.distroboxManager
 
         function onContainerCreated() {
-            // 容器创建成功后显示提示
             console.log("Container created successfully")
         }
 
         function onContainerDeleted() {
-            // 容器删除成功后显示提示
             console.log("Container deleted successfully")
         }
 
         function onCommandError(error) {
-            // 显示错误信息
             console.log("Command error: " + error)
         }
     }
