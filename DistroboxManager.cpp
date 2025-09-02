@@ -88,6 +88,12 @@ void DistroboxManager::runCommand(const QString &command)
 
 void DistroboxManager::listContainers()
 {
+    // Check if a list operation is already running
+    if (m_listProcess->state() != QProcess::NotRunning) {
+        qDebug() << "List process already running, ignoring new request";
+        return;
+    }
+
     qDebug() << "Running distrobox list command";
 
     QStringList args;
@@ -152,6 +158,13 @@ void DistroboxManager::createContainer(const QString &name, const QString &image
 
 void DistroboxManager::createContainer(const QString &name, const QString &image, bool nvidia, bool init, const QString &homeDir, const QStringList &volumes)
 {
+    // Check if an operation is already running
+    if (m_operationProcess->state() != QProcess::NotRunning) {
+        qDebug() << "Operation process already running, cannot create container";
+        emit commandError("Another operation is already running. Please wait for it to complete.");
+        return;
+    }
+
     qDebug() << "Creating container:" << name << "with image:" << image;
 
     // send the task started signal
@@ -208,6 +221,13 @@ void DistroboxManager::createContainer(const QString &name, const QString &image
 
 void DistroboxManager::deleteContainer(const QString &containerName)
 {
+    // Check if an operation is already running
+    if (m_operationProcess->state() != QProcess::NotRunning) {
+        qDebug() << "Operation process already running, cannot delete container";
+        emit commandError("Another operation is already running. Please wait for it to complete.");
+        return;
+    }
+
     qDebug() << "Deleting container:" << containerName;
 
     // send the task started signal
@@ -552,6 +572,13 @@ void DistroboxManager::upgradeContainer(const QString &containerName)
 
 void DistroboxManager::upgradeAllContainers()
 {
+    // Check if an operation is already running
+    if (m_operationProcess->state() != QProcess::NotRunning) {
+        qDebug() << "Operation process already running, cannot upgrade all containers";
+        emit commandError("Another operation is already running. Please wait for it to complete.");
+        return;
+    }
+
     qDebug() << "Upgrading all containers";
 
     // send the task started signal

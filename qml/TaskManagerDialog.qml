@@ -43,7 +43,7 @@ Dialog {
                     text: qsTr("Tasks such as creating, deleting and upgrading containers will appear here.")
                     anchors.horizontalCenter: parent.horizontalCenter
                     horizontalAlignment: Text.AlignHCenter
-                    width: 300
+                    width: parent.width - 40
                     wrapMode: Text.WordWrap
                     color: palette.windowText
                 }
@@ -67,8 +67,8 @@ Dialog {
                     spacing: 2
 
                     delegate: ItemDelegate {
-                        width: taskListView.width
-                        height: 60
+                        width: ListView.view.width
+                        height: rowLayout.implicitHeight + 20
 
                         Rectangle {
                             anchors.fill: parent
@@ -78,11 +78,12 @@ Dialog {
                         }
 
                         RowLayout {
+                            id: rowLayout
                             anchors.fill: parent
                             anchors.margins: 10
                             spacing: 10
 
-                            Column {
+                            ColumnLayout {
                                 Layout.fillWidth: true
                                 spacing: 2
 
@@ -110,7 +111,7 @@ Dialog {
                                     text: model.description
                                     font.pixelSize: 11
                                     wrapMode: Text.WordWrap
-                                    width: parent.width
+                                    Layout.fillWidth: true
                                 }
                             }
 
@@ -212,36 +213,41 @@ Dialog {
                 Layout.fillWidth: true
                 Layout.fillHeight: true
                 Layout.margins: 10
+                clip: true
+                contentWidth: availableWidth
 
-                Column {
+                ColumnLayout {
                     width: parent.width
                     spacing: 10
 
                     Text {
                         id: detailTaskName
+                        Layout.fillWidth: true
                         font.bold: true
                         font.pointSize: 12
                         color: palette.windowText
                         wrapMode: Text.WordWrap
-                        width: parent.width
                     }
 
                     Text {
                         id: detailTaskStatus
+                        Layout.fillWidth: true
                         font.pixelSize: 11
                         color: palette.windowText
                     }
 
                     Label {
                         id: detailTaskDescription
+                        Layout.fillWidth: true
                         font.pixelSize: 11
                         wrapMode: Text.WordWrap
-                        width: parent.width
                     }
 
                     Rectangle {
-                        width: parent.width
-                        height: 200
+                        Layout.fillWidth: true
+                        Layout.minimumHeight: 150
+                        Layout.preferredHeight: 200
+                        Layout.maximumHeight: 300
                         color: palette.base
                         border.color: palette.mid
                         border.width: 1
@@ -266,10 +272,10 @@ Dialog {
 
                     Text {
                         id: detailErrorMessage
+                        Layout.fillWidth: true
                         visible: text.length > 0
                         color: "red"
                         wrapMode: Text.WordWrap
-                        width: parent.width
                         font.pixelSize: 11
                     }
                 }

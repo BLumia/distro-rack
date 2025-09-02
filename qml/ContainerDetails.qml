@@ -351,28 +351,31 @@ Item {
         anchors.centerIn: Overlay.overlay
 
         width: 400
-        height: 200
+        height: Math.max(implicitHeight, 200)
 
         property string sourceContainerName: ""
 
-        Column {
-            width: parent.width
+        ColumnLayout {
+            anchors.fill: parent
             spacing: 15
 
             Text {
                 text: qsTr("Clone container: %1").arg(cloneContainerDialog.sourceContainerName)
                 font.bold: true
                 color: palette.windowText
+                Layout.fillWidth: true
+                wrapMode: Text.WordWrap
             }
 
             Text {
                 text: qsTr("Enter name for the new container:")
                 color: palette.windowText
+                Layout.fillWidth: true
             }
 
             TextField {
                 id: cloneNameField
-                width: parent.width
+                Layout.fillWidth: true
                 placeholderText: "Enter new container name"
 
                 onAccepted: {
@@ -455,8 +458,13 @@ Item {
         target: stateManager.containerModel
 
         function onContainersChanged() {
-            // 容器列表更新时，如果当前容器仍然存在，保持显示
-            // 容器属性会自动通过 getContainerData 更新
+            // 容器列表更新时，强制刷新属性绑定
+            // 通过重新设置 currentContainerName 来触发属性更新
+            var tempName = currentContainerName;
+            if (tempName) {
+                currentContainerName = "";
+                currentContainerName = tempName;
+            }
         }
     }
 

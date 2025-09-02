@@ -42,7 +42,7 @@ Dialog {
         StackLayout {
             Layout.fillWidth: true
             Layout.fillHeight: true
-            Layout.topMargin: 20
+            Layout.topMargin: 10
             currentIndex: tabBar.currentIndex
 
             TerminalSettingsTab {
