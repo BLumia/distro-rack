@@ -103,7 +103,13 @@ set(CPACK_DEBIAN_PACKAGE_HOMEPAGE "https://github.com/blumia/distro-rack")
 set(CPACK_DEBIAN_PACKAGE_SHLIBDEPS ON)
 
 # Keep distrobox as explicit dependency since it's a runtime requirement not detected by shlibdeps
-set(CPACK_DEBIAN_PACKAGE_DEPENDS "distrobox")
+set(CPACK_DEBIAN_PACKAGE_DEPENDS
+    "qml6-module-qtquick"
+    "qml6-module-qtquick-controls"
+    "qml6-module-qtquick-dialogs"
+    "qml6-module-qtquick-layouts"
+    "qml6-module-qtquick-window"
+    "distrobox")
 set(CPACK_DEBIAN_PACKAGE_SUGGESTS "libdtk6declarative")
 
 # License file
