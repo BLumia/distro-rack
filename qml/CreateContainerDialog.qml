@@ -67,6 +67,7 @@ Dialog {
 
                     GroupBox {
                         title: qsTr("Settings")
+                        label: Label { text: parent.title; font.bold: true; } // workaround dtk6declarative <= 6.0.41 bug
                         Layout.fillWidth: true
 
                         GridLayout {
@@ -131,6 +132,7 @@ Dialog {
 
                     GroupBox {
                         title: qsTr("Options")
+                        label: Label { text: parent.title; font.bold: true; } // workaround dtk6declarative <= 6.0.41 bug
                         Layout.fillWidth: true
 
                         ColumnLayout {
@@ -151,6 +153,7 @@ Dialog {
 
                     GroupBox {
                         title: qsTr("Volumes")
+                        label: Label { text: parent.title; font.bold: true; } // workaround dtk6declarative <= 6.0.41 bug
                         Layout.fillWidth: true
 
                         ColumnLayout {
@@ -253,6 +256,7 @@ Dialog {
 
                     GroupBox {
                         title: qsTr("Assemble from File")
+                        label: Label { text: parent.title; font.bold: true; } // workaround dtk6declarative <= 6.0.41 bug
                         Layout.fillWidth: true
 
                         ColumnLayout {
@@ -322,6 +326,7 @@ Dialog {
 
                     GroupBox {
                         title: qsTr("From URL")
+                        label: Label { text: parent.title; font.bold: true; } // workaround dtk6declarative <= 6.0.41 bug
                         Layout.fillWidth: true
 
                         ColumnLayout {
@@ -336,7 +341,7 @@ Dialog {
                             TextField {
                                 id: urlField
                                 Layout.fillWidth: true
-                                placeholderText: "https://example.com/container.yaml"
+                                placeholderText: "https://example.com/container.ini"
                                 text: createDialog.assembleUrl
                                 onTextChanged: {
                                     createDialog.assembleUrl = text

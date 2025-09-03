@@ -51,6 +51,7 @@ qt6_add_qml_module(distro-rack
         qml/+kde/ThemedIcon.qml
         qml/SettingsDialog.qml
         qml/TerminalSettingsTab.qml
+        qml/ActionButton.qml
 )
 
 # Define package version for C++

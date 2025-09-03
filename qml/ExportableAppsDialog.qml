@@ -52,7 +52,7 @@ Dialog {
             delegate: ItemDelegate {
                 id: itemDelegate
                 text: model.name
-                width: appsListView.width
+                width: ListView.view.width
 
                 contentItem: RowLayout {
                     anchors.fill: parent
@@ -210,7 +210,7 @@ Dialog {
     onOpened: {
         // 当对话框打开时，显示加载页面
         dialogStackLayout.currentIndex = 0;
-        
+
         // 强制检查当前模型状态并设置正确的页面
         // FIXME: we shouldn't need to do this.
         Qt.callLater(function() {

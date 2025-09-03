@@ -36,10 +36,9 @@ ScrollView {
                     clip: true
 
                     delegate: ItemDelegate {
-                        width: terminalListView.width
-                        height: 60
+                        width: ListView.view.width
 
-                        RowLayout {
+                        contentItem: RowLayout {
                             anchors.fill: parent
                             anchors.margins: 10
 

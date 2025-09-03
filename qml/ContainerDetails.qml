@@ -105,6 +105,7 @@ Item {
             GroupBox {
                 Layout.fillWidth: true
                 title: qsTr("Container Status")
+                label: Label { text: parent.title; font.bold: true; leftPadding: 5 } // workaround dtk6declarative <= 6.0.41 bug
 
                 ColumnLayout {
                     anchors.fill: parent
@@ -153,56 +154,43 @@ Item {
             GroupBox {
                 Layout.fillWidth: true
                 title: qsTr("Quick Actions")
+                label: Label { text: parent.title; font.bold: true; leftPadding: 5 } // workaround dtk6declarative <= 6.0.41 bug
 
                 ColumnLayout {
                     anchors.fill: parent
                     spacing: 4
 
-                    ItemDelegate {
+                    ActionButton {
                         Layout.fillWidth: true
                         text: qsTr("Upgrade Container")
                         icon.name: "software-update-available-symbolic"
+                        description: qsTr("Update all packages")
 
                         onClicked: {
                             if (containerName) {
                                 stateManager.distroboxManager.upgradeContainer(containerName);
                             }
                         }
+                    }
 
-                        Label {
-                            anchors.right: parent.right
-                            anchors.verticalCenter: parent.verticalCenter
-                            anchors.rightMargin: 16
-                            text: qsTr("Update all packages")
-                            font.pixelSize: 11
+                    ActionButton {
+                        Layout.fillWidth: true
+                        text: qsTr("Applications")
+                        icon.name: "view-list-bullet-symbolic"
+                        description: qsTr("Manage exportable applications")
+
+                        onClicked: {
+                            if (containerName) {
+                                stateManager.showExportableApps(containerName);
+                            }
                         }
                     }
 
-                    ItemDelegate {
-                         Layout.fillWidth: true
-                         text: qsTr("Applications")
-                         icon.name: "view-list-bullet-symbolic"
-
-                         onClicked: {
-                             if (containerName) {
-
-                                 stateManager.showExportableApps(containerName);
-                             }
-                         }
-
-                        Label {
-                            anchors.right: parent.right
-                            anchors.verticalCenter: parent.verticalCenter
-                            anchors.rightMargin: 16
-                            text: qsTr("Manage exportable applications")
-                            font.pixelSize: 11
-                        }
-                    }
-
-                    ItemDelegate {
+                    ActionButton {
                         Layout.fillWidth: true
                         text: qsTr("Clone Container")
                         icon.name: "edit-copy-symbolic"
+                        description: qsTr("Create a copy of this container")
 
                         onClicked: {
                             if (containerName) {
@@ -210,37 +198,22 @@ Item {
                                 cloneContainerDialog.open();
                             }
                         }
-
-                        Label {
-                            anchors.right: parent.right
-                            anchors.verticalCenter: parent.verticalCenter
-                            anchors.rightMargin: 16
-                            text: qsTr("Create a copy of this container")
-                            font.pixelSize: 11
-                        }
                     }
 
-                    ItemDelegate {
+                    ActionButton {
                         Layout.fillWidth: true
                         text: qsTr("Generate Desktop Entry")
                         icon.name: "application-x-desktop-symbolic"
+                        description: qsTr("Create desktop shortcut for this container")
 
                         onClicked: {
                             if (containerName) {
                                 stateManager.distroboxManager.generateEntry(containerName);
                             }
                         }
-
-                        Label {
-                            anchors.right: parent.right
-                            anchors.verticalCenter: parent.verticalCenter
-                            anchors.rightMargin: 16
-                            text: qsTr("Create desktop shortcut for this container")
-                            font.pixelSize: 11
-                        }
                     }
 
-                    ItemDelegate {
+                    ActionButton {
                         Layout.fillWidth: true
                         text: {
                             if (containerInstallableFileExtension) {
@@ -249,20 +222,13 @@ Item {
                             return qsTr("Install Package");
                         }
                         icon.name: "package-symbolic"
+                        description: qsTr("Install packages into this container")
                         visible: containerInstallableFileExtension
 
                         onClicked: {
                             if (containerName) {
                                 packageFileDialog.open();
                             }
-                        }
-
-                        Label {
-                            anchors.right: parent.right
-                            anchors.verticalCenter: parent.verticalCenter
-                            anchors.rightMargin: 16
-                            text: qsTr("Install packages into this container")
-                            font.pixelSize: 11
                         }
                     }
                 }
@@ -272,48 +238,35 @@ Item {
             GroupBox {
                 Layout.fillWidth: true
                 title: qsTr("Danger Zone")
+                label: Label { text: parent.title; font.bold: true; leftPadding: 5 } // workaround dtk6declarative <= 6.0.41 bug
 
                 ColumnLayout {
                     anchors.fill: parent
                     spacing: 4
 
-                    ItemDelegate {
+                    ActionButton {
                         Layout.fillWidth: true
                         text: qsTr("Delete Desktop Entry")
                         icon.name: "application-x-desktop-symbolic"
+                        description: qsTr("Remove desktop shortcut for this container")
+                        descriptionColor: "#ff9800"
 
                         onClicked: {
                             if (containerName) {
                                 stateManager.distroboxManager.deleteEntry(containerName);
                             }
                         }
-
-                        Label {
-                            anchors.right: parent.right
-                            anchors.verticalCenter: parent.verticalCenter
-                            anchors.rightMargin: 16
-                            text: qsTr("Remove desktop shortcut for this container")
-                            color: "#ff9800"
-                            font.pixelSize: 11
-                        }
                     }
 
-                    ItemDelegate {
+                    ActionButton {
                         Layout.fillWidth: true
                         text: qsTr("Delete Container")
                         icon.name: "user-trash-symbolic"
+                        description: qsTr("Permanently remove this container and all its data")
+                        descriptionColor: "#f44336"
 
                         onClicked: {
                             deleteConfirmationDialog.open();
-                        }
-
-                        Label {
-                            anchors.right: parent.right
-                            anchors.verticalCenter: parent.verticalCenter
-                            anchors.rightMargin: 16
-                            text: qsTr("Permanently remove this container and all its data")
-                            color: "#f44336"
-                            font.pixelSize: 11
                         }
                     }
                 }

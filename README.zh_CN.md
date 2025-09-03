@@ -18,6 +18,7 @@ DistroRack 是一个功能丰富的图形界面程序，用于在 Linux 上创�
   - 将容器内的应用程序导出/取消导出到宿主操作系统
 - 基于 Qt/QML 的图形界面，可选桌面环境集成：
   - DDE
+  - KDE
 - 自定义终端模拟器支持，开箱即用支持以下终端：
   - deepin-terminal
   - konsole
@@ -46,7 +47,7 @@ $ cpack -G DEB
 
 本项目深受 [DistroShelf](https://github.com/ranfdev/DistroShelf/) 启发。我最初计划将 DistroShelf 移植到 `deepin 25`，但遗憾的是 DistroShelf 需要相当新版本的 `gtk-rs` 和 `libadwaita`，这需要相当新版本的 `gtk4-sys`，而 `deepin 25` 在近期可能无法提供，因此无法构建。虽然 `flatpak` 在 `deepin` 中可用，但如果终端用户没有良好的网络连接，使用 `flathub` 包会极其困难，特别是对于主要生活在中国大陆的 deepin 用户。
 
-通过为 distrobox 制作基于 Qt 的图形界面，我们带来了在基于 Qt 的桌面环境（本例中是 DDE，未来可能还有 KDE，其他桌面环境则回退到通用的 Qt/QML 界面）上使其看起来更加系统原生的可能性，并使其能够在 `deepin 25` 下通过简单的 `dpkg -i`（或者未来可能通过 `apt install`）直接使用，无需折腾 `flatpak` 镜像或代理。
+通过为 distrobox 制作基于 Qt 的图形界面，我们带来了在基于 Qt 的桌面环境（本例中主要指 DDE，现也支持 KDE。其他桌面环境则回退到通用的 Qt/QML 界面）上使其看起来更加系统原生的可能性，并使其能够在 `deepin 25` 下通过简单的 `dpkg -i`（或者未来可能通过 `apt install`）直接使用，无需折腾 `flatpak` 镜像或代理。
 
 本项目也是一个实验性项目，用于测试基于 LLM 的工具是否以及如何能够帮助项目开发。我可能会在稍后写一篇关于这个话题的博客文章。
 

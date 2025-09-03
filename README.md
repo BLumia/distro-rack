@@ -18,6 +18,7 @@ DistroRack is a feature-rich graphical interface for creating and managing [Dist
   - Export/unexport apps inside containers to your host OS
 - Qt/QML based GUI with optional desktop environment integration:
   - DDE
+  - KDE
 - Custom terminal emulator support with the following ones supported out-of-the-box
   - deepin-terminal
   - konsole
@@ -46,7 +47,7 @@ $ cpack -G DEB
 
 This project is heavily inspired by [DistroShelf](https://github.com/ranfdev/DistroShelf/). I originally plan to port DistroShelf to `deepin 25`, but sadly DistroShelf requires a pretty up-to-date version of `gtk-rs` and `libadwaita` which requires a pretty recent version of `gtk4-sys` that `deepin 25` might not be able to ship in the near future, thus impossible to build. While `flatpak` is available in `deepin`, using `flathub` packages are extremely hard if the end-user doesn't have a decent network, especially for deepin users who mostly live in China mainland.
 
-By making a Qt-based GUI for distrobox, we bring the possibility to make it look more system-native on Qt-based DEs (DDE in this case, maybe KDE as well in the future, and fallback to a generic Qt/QML GUI for other DEs), and make it directly usable under `deepin 25` with a simple `dpkg -i` (or maybe `apt install` in the future), without the need of fiddling with `flatpak` mirrors or proxies.
+By making a Qt-based GUI for distrobox, we bring the possibility to make it look more system-native on Qt-based DEs (mainly for DDE in this case, KDE is also supported as well, and fallback to a generic Qt/QML GUI for other DEs), and make it directly usable under `deepin 25` with a simple `dpkg -i` (or maybe `apt install` in the future), without the need of fiddling with `flatpak` mirrors or proxies.
 
 This project is also an experimental project to test if and how the LLM-based tooling could help in project development. I might write a blogpost related to this topic later.
 

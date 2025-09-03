@@ -49,7 +49,7 @@ Item {
                 model: stateManager.containerModel
 
                 delegate: ItemDelegate {
-                    width: listView.width
+                    width: ListView.view.width
                     text: model.name
                     icon.name: model.distroIconName
                     highlighted: ListView.isCurrentItem
