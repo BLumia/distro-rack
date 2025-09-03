@@ -51,7 +51,15 @@ $ cpack -G DEB
 
 本项目也是一个实验性项目，用于测试基于 LLM 的工具是否以及如何能够帮助项目开发。我可能会在稍后写一篇关于这个话题的博客文章。
 
-## 支持
+## 参与贡献
+
+除了参与反馈和代码贡献外，也欢迎各种类型的贡献！
+
+### 帮助翻译
+
+[在 Codeberg 的 Weblate 实例上参与翻译](https://translate.codeberg.org/projects/pineapple-apps/distro-rack/)
+
+### 打赏
 
 [![Afdian](https://static.afdiancdn.com/static/img/logo/logo.png)Afdian | 爱发电](https://afdian.com/a/BLumia)
 

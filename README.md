@@ -51,7 +51,15 @@ By making a Qt-based GUI for distrobox, we bring the possibility to make it look
 
 This project is also an experimental project to test if and how the LLM-based tooling could help in project development. I might write a blogpost related to this topic later.
 
-## Funding
+## Contribution
+
+Beside feedback and code contribution, other contributions are also welcome!
+
+### Translation
+
+[Translate into your language on Codeberg's Weblate instance](https://translate.codeberg.org/projects/pineapple-apps/distro-rack/)
+
+### Funding
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/blumia)
 
