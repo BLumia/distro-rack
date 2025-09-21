@@ -29,13 +29,8 @@ int main(int argc, char *argv[])
 
     // Load translations
     QTranslator translator;
-    const QStringList uiLanguages = QLocale::system().uiLanguages();
-    for (const QString &locale : uiLanguages) {
-        const QString baseName = "distro-rack_" + QLocale(locale).name();
-        if (translator.load(":/i18n/" + baseName)) {
-            app.installTranslator(&translator);
-            break;
-        }
+    if (translator.load(QLocale(), "distro-rack", "_", ":/i18n/")) {
+        app.installTranslator(&translator);
     }
 
     app.setWindowIcon(QIcon::fromTheme("terminal-distrobox-icon"));
