@@ -17,7 +17,7 @@ find_package(Qt6 6.8 REQUIRED COMPONENTS Core Quick QuickControls2 LinguistTools
 
 # Enable automatic moc, rcc and uic
 qt6_standard_project_setup(
-    I18N_TRANSLATED_LANGUAGES en zh_CN
+    I18N_TRANSLATED_LANGUAGES en zh_CN de nl pl tr
 )
 
 # Add the executable
