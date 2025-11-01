@@ -1,3 +1,16 @@
+Version 0.2.1
+~~~~~~~~~~~~~
+Released: 2025-11-01
+
+Bugfixes:
+ * Proper way to load translations to support fallback
+
+Miscellaneous:
+ * Translations update from Codeberg Translate
+
+Contributors:
+ Outbreak2096, Vistaus, Dirk
+
 Version 0.2.0
 ~~~~~~~~~~~~~
 Released: 2025-09-03

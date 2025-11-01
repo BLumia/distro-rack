@@ -51,6 +51,20 @@
     <keyword>terminal</keyword>
   </keywords>
   <releases>
+    <release type="stable" version="0.2.1" date="2025-11-01T00:00:00Z">
+      <description>
+        <p>This release fixes the following bug:</p>
+        <ul>
+          <li>Proper way to load translations to support fallback</li>
+        </ul>
+        <p>This release includes the following change:</p>
+        <ul>
+          <li>Translations update from Codeberg Translate</li>
+        </ul>
+        <p>With contributions from:</p>
+        <p>Outbreak2096, Vistaus, Dirk</p>
+      </description>
+    </release>
     <release type="stable" version="0.2.0" date="2025-09-03T00:00:00Z">
       <description>
         <p>This release fixes the following bug:</p>
